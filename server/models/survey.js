@@ -5,7 +5,8 @@ let survey = mongoose.Schema({
     ques_and_list: Array,
     responses: Number,
     questions: Number,
-    date: Date
+    createDate: Date,
+    updateDate: Date
 },
 {
   collection: "survey"
