@@ -1,8 +1,7 @@
 /* custom css goes here */
 @import "./reset.css";
 @import "./css/home.css";
-@import "./css/surveyList.css";
-@import "./css/customer.css";
+
 /* Global */
 :root{
     /* Color */
