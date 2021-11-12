@@ -12,5 +12,8 @@ router.get('/home', indexController.displayHomePage);
 /* GET survey page. */
 router.get('/survey', indexController.displaySurveyPage);
 
+/* GET add survey page. */
+router.get('/add', indexController.displayAddSurveyPage);
+
 
 module.exports = router;

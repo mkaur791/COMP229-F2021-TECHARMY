@@ -16,6 +16,14 @@
           <a class="nav-link" href="/home"><i class="fas fa-house-user"></i> Home </a>
         </li>
 
+        <% if (title == "Create") { %>
+        <li class="nav-item active">
+        <% } else  { %>
+        <li class="nav-item">
+        <% } %>
+          <a class="nav-link" href="/add"><i class="fas fa-plus-circle"></i> Create Survey</a>
+        </li>
+
         <% if (title == "Survey") { %>
         <li class="nav-item active">
         <% } else  { %>
