@@ -22,6 +22,3 @@ router.get('/edit', indexController.displayEditSurveyPage);
 
 
 module.exports = router;
-
-
-/* LG - may need to update 11/02/21 */

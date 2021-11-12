@@ -18,10 +18,7 @@ router.get('/survey', indexController.displaySurveyPage);
 router.get('/add', indexController.displayAddSurveyPage);
 
 /* GET edit survey page. */
-router.get('/edit', indexController.displayEditSurveyPage);
+router.get('/edit', indexController.displayAddSurveyPage);
 
 
 module.exports = router;
-
-
-/* LG - may need to update 11/02/21 */

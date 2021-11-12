@@ -13,6 +13,6 @@ module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/add'});
 }
 
-module.exports.displayEditSurveyPage = (req, res, next) => {
+module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/edit'});
 }
