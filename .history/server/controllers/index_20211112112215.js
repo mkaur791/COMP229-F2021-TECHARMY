@@ -6,8 +6,7 @@ module.exports.displayHomePage = (req, res, next) => {
 }
 
 module.exports.displaySurveyPage = (req, res, next) => {
-    res.render('index', { title: 'Survey',path: 'survey/list'});
-    // res.render('index', { title: 'Survey',path: 'home'});
+    res.render('index', { title: 'Survey',path: 'survey/home'});
 }
 
 module.exports.displayAddSurveyPage = (req, res, next) => {

@@ -13,7 +13,7 @@ router.get('/home', indexController.displayHomePage);
 survey list will be on home page
 */
 router.get('/survey', indexController.displaySurveyPage);
-
+// router.get('/home', indexController.displaySurveyPage);
 
 /* GET add survey page. */
 router.get('/add', indexController.displayAddSurveyPage);
@@ -21,13 +21,13 @@ router.get('/add', indexController.displayAddSurveyPage);
 /* GET edit survey page. */
 router.get('/edit', indexController.displayEditSurveyPage);
 
-// // //modules required for routing
+// //modules required for routing
 // let express = require('express');
 // let router = express.Router();
 // let mongoose = require('mongoose');
 
 // // define the book model
-// let Surveys = require('../models/survey');
+// let Book = require('../models/survey');
 
 // /* GET home page. wildcard */
 // router.get('/', (req, res, next) => {

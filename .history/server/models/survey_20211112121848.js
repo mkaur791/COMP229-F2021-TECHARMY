@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-let Surveys = mongoose.Schema({
+let survey = mongoose.Schema({
     title: String,
     ques_and_list: Array,
     responses: Number,
@@ -12,4 +12,4 @@ let Surveys = mongoose.Schema({
   collection: "survey"
 });
 
-module.exports = mongoose.model('Surveys', Surveys);
+module.exports = mongoose.model('Survey', Survey);

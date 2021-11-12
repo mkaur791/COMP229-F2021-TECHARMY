@@ -10,21 +10,21 @@ let surveys = require('../models/survey');
 
 /* GET Survey List page. READ */
 
-router.get('/', (req, res, next) => {
-  // find all books in the books collection
-  surveys.find( (err, survey) => {
-    if (err) {
-      return console.error(err);
-    }
-    else {
-      res.render('survey/index', {
-        title: 'survey',
-        survey: survey
-      });
-    }
-  });
+// router.get('/', (req, res, next) => {
+//   // find all books in the books collection
+//   survey.find( (err, survey) => {
+//     if (err) {
+//       return console.error(err);
+//     }
+//     else {
+//       res.render('survey/index', {
+//         title: 'survey',
+//         survey: survey
+//       });
+//     }
+//   });
 
-});
+// });
 
 //  GET the Survey Details page in order to add a new Survey
 router.get('/add', (req, res, next) => {
@@ -45,7 +45,7 @@ router.post('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
-    let newSurveys = new surveys({
+    let newSurvey = new survey({
         "Title": req.body.Title,
         "Ques_And_List": req.body.Ques_And_List,
         "Responses": req.body.Responses,
@@ -54,7 +54,7 @@ router.post('/add', (req, res, next) => {
         "Updated": req.body.Updated
     });
 
-    surveys.create(newSurveys, (err, surveys) => {
+    survey.create(newSurvey, (err, survey) => {
       if(err) {
         console.log(err);
         res.end(err);
@@ -74,7 +74,7 @@ router.post('/add', (req, res, next) => {
      *****************/
     let id = req.params.id;
 
-    surveys.findById(id, (err, surveysToEdit) => {
+    survey.findById(id, (err, surveyToEdit) => {
       if(err) {
         console.log(err);
         res.end(err);
@@ -82,7 +82,7 @@ router.post('/add', (req, res, next) => {
         //shows the edit view
         res.render('survey/list', {
           title: 'Edit Survey', 
-          survey: surveysToEdit
+          survey: surveyToEdit
         })
       }
     });
@@ -97,7 +97,7 @@ router.post('/add', (req, res, next) => {
      *****************/
      let id = req.params.id;
      
-     let updatedSurveys = surveys({
+     let updatedSurvey = survey({
        "_id": id,
        "Title": req.body.Title,
        "Ques_And_List": req.body.Ques_And_List,
@@ -108,7 +108,7 @@ router.post('/add', (req, res, next) => {
 
      });
 
-     surveys.updateOne({_id: id}, updatedSurveys, (err) => {
+     survey.updateOne({_id: id}, updatedSurvey, (err) => {
        if(err) {
          console.log(err);
          res.end(err);
@@ -127,7 +127,7 @@ router.get('/delete/:id', (req, res, next) => {
      *****************/
     let id = req.params.id;
 
-    surveys.remove({ _id: id }, (err) => {
+    survey.remove({ _id: id }, (err) => {
       if(err) {
         console.log(err);
         res.end(err);

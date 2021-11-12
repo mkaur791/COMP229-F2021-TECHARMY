@@ -13,7 +13,7 @@ router.get('/home', indexController.displayHomePage);
 survey list will be on home page
 */
 router.get('/survey', indexController.displaySurveyPage);
-
+// router.get('/home', indexController.displaySurveyPage);
 
 /* GET add survey page. */
 router.get('/add', indexController.displayAddSurveyPage);
