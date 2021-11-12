@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
       return console.error(err);
     }
     else {
-      res.render('survey/list', {
+      res.render('survey/index', {
         title: 'survey',
         survey: survey
       });

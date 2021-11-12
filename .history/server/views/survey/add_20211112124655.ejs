@@ -1,10 +1,13 @@
-<!-- Work on Edit-->
 <div class="container">
     <br>
-    <h2 class="home__description text-center font-weight-bold">Edit a survey</h2>
+    <h2 class="home__description text-center font-weight-bold">Create a survey</h2>
 </div>
 
-<!-- Content for the Edit page -->
+
+<!-- Work on Add -->
+
+
+<!-- Content for the Add page -->
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
@@ -12,20 +15,18 @@
 
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="titleTextField">Survey Title</label>
+                    <label for="surveyTextField">Survey Title</label>
                     <input type="text" class="form-control"
-                    id="titleTextField"
+                    id="surveyTextField"
                     placeholder="Enter the Survey Title"
-                    name="title" 
-                    value="<%= survey.title %>"
-                    required>
+                    name="name" required>
                 </div>
 
                 <div class="form-group">
                     <form action="">
                         <label for="Ques_And_List">Question Type:</label>
                         <select id="Ques_And_List" name="Ques_And_List">
-                          <option value="trueFalse">True/ False</option>
+                          <option value="trueFalse">Single Text</option>
                           <option value="multiChoice">Multiple Choice </option>
 
                         </select>
@@ -39,9 +40,7 @@
                     <input type="text" class="form-control"
                     id="questionTextField"
                     placeholder="Enter question"
-                    name="question" 
-                    value="<%= survey.question %>"
-                    required>
+                    name="question" required>
                 </div>
 
 
@@ -50,9 +49,7 @@
                     <input type="text" class="form-control"
                     id="responseTextField"
                     placeholder="Enter the Answer"
-                    name="response" 
-                    value="<%= survey.response %>"
-                    required>
+                    name="response" required>
                 </div>
 
                 <button class="btn btn-primary" type="submit">
