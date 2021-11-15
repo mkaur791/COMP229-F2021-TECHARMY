@@ -17,11 +17,6 @@ module.exports.displayHomePage = (req, res, next) => {
     })
 }
 
-module.exports.displaySurveyPage = (req, res, next) => {
-    res.render('index', { title: 'Survey',path: 'survey/list'});
-    // res.render('index', { title: 'Survey',path: 'home'});
-}
-
 // display add/create survey page
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/add'});
@@ -69,7 +64,16 @@ module.exports.processAddSurvey = (req, res, next) => {
 
 // display edit survey page
 module.exports.displayEditSurveyPage = (req, res, next) => {
-    res.render('index', { title: 'Survey',path: 'survey/edit'});
+    let id = req.params.id;
+    Survey.findById(id, (err, surveyToEdit, next) =>{
+        if(err){
+            console.log(err);
+            res.end(err);
+        } else {
+            console.log('surveyToEdit', surveyToEdit)
+            res.render('index', { title: 'Survey',path: 'survey/edit', survey:surveyToEdit});
+        }
+    })
 }
 
 module.exports.deleteSurvey = function(req, res, next){

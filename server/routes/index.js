@@ -16,7 +16,7 @@ router.get('/add', indexController.displayAddSurveyPage);
 router.post('/add', indexController.processAddSurvey);
 
 /* GET edit survey page. */
-router.get('/edit', indexController.displayEditSurveyPage);
+router.get('/edit/:id', indexController.displayEditSurveyPage);
 
 /* GET route for deleting a survey. */
 router.get('/delete/:id',indexController.deleteSurvey)

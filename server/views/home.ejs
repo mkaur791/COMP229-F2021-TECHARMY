@@ -30,7 +30,7 @@
             <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
             <td><%= SurveyList[count].responses%></td>
             <td>
-                <a href="#" class = "btn survey__create">
+                <a href="/edit/<%= SurveyList[count]._id %>" class = "btn survey__create">
                    Edit Survey
                 </a>
             </td>
