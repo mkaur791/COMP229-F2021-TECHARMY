@@ -29,7 +29,42 @@ module.exports.displayAddSurveyPage = (req, res, next) => {
 
 // process add survey page
 module.exports.processAddSurvey = (req, res, next) => {
-    console.log("request..", req.body)
+
+    let totalQuestions =  req.body.questionCount
+    let title = req.body.title
+    let quesData = req.body
+    let data=[]
+
+    // creating survey object for database storage
+    for(let i=1;i<=totalQuestions;i++){
+        let ques = {
+            "ques": quesData["question"+i],
+            "type": quesData["question"+i+"type"]
+        }
+        if(quesData["question"+i+"options"]) ques['options'] = quesData["question"+i+"options"]
+        data.push(ques)
+    }
+
+    let newSurvey = Survey({
+        title,
+        ques_and_list:data,
+        responses:0,
+        questions: data.length,
+        created: new Date(),
+        updated: new Date()
+    })
+
+    // create a new survey
+    Survey.create(newSurvey ,(err,req,next)=>{
+        if(err){
+            console.log(err);
+            res.end(err);
+        }
+        else{
+            // refresh the survey list
+            res.redirect('/');
+        }
+    })
 }
 
 // display edit survey page

@@ -117,30 +117,13 @@ const appendQuesAns = () =>{
     div.appendChild(labelType)
     div.appendChild(createQuesTypeChoice(count))
     div.appendChild(document.createElement('br'))
-    div.appendChild(createRemoveIcon(count))
 
     // appending div to form
     form.appendChild(div)
+    let totalQuestions = document.getElementById('questionCount')
+    totalQuestions.value = count
     count++
     return form;
-}
-
-// method to create a remove icon to remove a question
-const createRemoveIcon = (count) => {
-    var button = document.createElement("button");
-    button.id = "remove-question"+count
-    button.setAttribute('class', 'btn btn-default remove-question');
-    var icon = document.createElement("span");
-    icon.className ="fas fa-minus-circle fa-2x";
-    button.appendChild(icon);
-    
-    button.onclick  = function(event){
-        event.preventDefault()
-        let questionToRemove = document.getElementById("question"+count)
-        questionToRemove.remove()
-    }
-
-    return button;
 }
 
 //create add icon
@@ -151,10 +134,4 @@ const createAddIcon = () => {
     icon.className ="fas fa-plus-circle";
     button.appendChild(icon);
     return button;
-}
-
-
-const calculateQuestions = () =>{
-    var c = document.getElementById("form").childElementCount;
-    console.log("count...",c)
 }
