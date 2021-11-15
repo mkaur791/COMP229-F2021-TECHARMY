@@ -37,23 +37,15 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/edit'});
 }
 
-// createSurvey(){
-//     Survey.displayAddSurveyPage {
-//         title: "Survey title",
-//         ques_and_list : [
-//             {
-//                 "ques": "What is your favourite food",
-//                 "type": "text"
-//             },
-//             {
-//                 "ques": "Do you eat rice?",
-//                 "type": "mcq",
-//                 "options": ["Yes","No","Sometimes"]
-//             }
-//         ],
-//         responses : 0,
-//         questions: 2,
-//         created: new Date(),
-//         updated: new Date()
-//     } 
-// }
+module.exports.deleteSurvey = function(req, res, next){
+    let id = req.params.id;
+    Survey.remove({_id: id} , (err) =>{
+        if(err){
+            console.log(err);
+            res.end(err);
+        }
+        else{
+            res.redirect('/');
+        }
+    })
+}

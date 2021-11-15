@@ -18,22 +18,8 @@ router.post('/add', indexController.processAddSurvey);
 /* GET edit survey page. */
 router.get('/edit', indexController.displayEditSurveyPage);
 
-// // //modules required for routing
-// let express = require('express');
-// let router = express.Router();
-// let mongoose = require('mongoose');
-
-// // define the book model
-// let Surveys = require('../models/survey');
-
-// /* GET home page. wildcard */
-// router.get('/', (req, res, next) => {
-//   res.render('/index', {
-//     title: 'Home',
-//     survey: ''
-//    });
-// });
-
+/* GET route for deleting a survey. */
+router.get('/delete/:id',indexController.deleteSurvey)
 
 module.exports = router;
 
