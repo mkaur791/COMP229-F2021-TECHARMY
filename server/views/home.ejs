@@ -4,6 +4,47 @@
     <h2 class="home__description">20 million questions answered daily.</h2>
     <button class="survey__create"><a href="/add">Create Survey</a></button>
             
-<%- include survey/list.ejs %>
+<div class="container">
+    <br>
+    <h2 class="home__description text-center font-weight-bold">Survey List</h2>
+    <table class="table table-hover table-bordered text-center">
+    <thead class="font-weight-bold">
+        <tr>
+            <th>No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Number of Questions</th>
+            <th scope="col">Created</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Responses</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let count = 0; count < SurveyList.length; count++){ %>
+        <tr>
+            <td><%= count+1+"." %></td>
+            <td><%= SurveyList[count].title%></td>
+            <td><%= SurveyList[count].questions%></td>
+            <td><%= SurveyList[count].created.toLocaleDateString()%></td>
+            <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
+            <td><%= SurveyList[count].responses%></td>
+            <td>
+                <a href="#" class = "btn survey__create">
+                   Edit Survey
+                </a>
+            </td>
+            <td>
+                <a href="#" class = "btn survey__create">
+                    Delete Survey
+                </a>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+    </table>
+</div>
+
+
 
   </section>

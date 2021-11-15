@@ -1,11 +1,20 @@
 let express = require('express');
 let router = express.Router();
+let Survey = require('../models/survey')
 
 // let Survey = require('../routes/survey');
 
 // display home page
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home',path: 'home'});
+    Survey.find((err, surveyList) => {
+        if(err){
+            return console.error(err);
+        }
+        else{
+            console.log("surveyList",surveyList)
+            res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList});
+        }
+    })
 }
 
 module.exports.displaySurveyPage = (req, res, next) => {

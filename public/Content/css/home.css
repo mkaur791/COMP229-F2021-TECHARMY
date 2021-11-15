@@ -61,3 +61,13 @@
 main{
     margin-bottom: 150px;
 }
+table{
+    font-size: 16px;
+}
+table .survey__create{
+    margin: 0px;;
+}
+
+th{
+    background-color: var(--color-light-white);
+}
