@@ -14,9 +14,11 @@ survey list will be on home page
 */
 router.get('/survey', indexController.displaySurveyPage);
 
-
 /* GET add survey page. */
 router.get('/add', indexController.displayAddSurveyPage);
+
+/* process add survey page. */
+router.post('/add', indexController.processAddSurvey);
 
 /* GET edit survey page. */
 router.get('/edit', indexController.displayEditSurveyPage);

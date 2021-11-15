@@ -58,3 +58,6 @@
     text-decoration: none;
     color: var(--color-white);
 }
+main{
+    margin-bottom: 150px;
+}

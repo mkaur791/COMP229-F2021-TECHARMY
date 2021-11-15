@@ -1,7 +1,3 @@
-<div class="container">
-    <br>
-    <h2 class="home__description text-center font-weight-bold">Create a survey</h2>
-</div>
 
 
 <!-- Work on Add -->
@@ -10,60 +6,26 @@
 <!-- Content for the Add page -->
 <div class="container">
     <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <h1><%= title %></h1>
 
-            <form class="form" method="POST">
+        <div class="col-md-10">
+            <br>
+            <h2 class="home__description text-center font-weight-bold">Create a survey</h2>
+
+            <form class="form" method="POST" id="add-form">
                 <div class="form-group">
                     <label for="surveyTextField">Survey Title</label>
                     <input type="text" class="form-control"
                     id="surveyTextField"
                     placeholder="Enter the Survey Title"
-                    name="name" required>
+                    name="title" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="questionTextField">Question</label>
-                    <input type="text" class="form-control"
-                    id="questionTextField"
-                    placeholder="Enter question"
-                    name="question" required>
-
+                <input type="hidden"  name="questionCount"/>
+                <div class="add-btn-group">
+                    <button type="submit" id="createSurvey"  class="survey__create">Create</button>
+                    <a href = "/" class="survey__create">Cancel</a>
                 </div>
-
-                <div class="form-group">
-                    <form action="">
-                        <label for="Ques_And_List">Question Type:</label>
-                        <select id="Ques_And_List" name="Ques_And_List" onchange="getQues_And_List(this)">
-                          <option value="">Select Type</option>
-                          <option value="val1">Single Text</option>
-                          <option value="val2">Multiple Choice </option>
-
-                        </select>
-
-                      </form>
-                      <button id="submitButton" type="submit" class="btn btn-primary">Save</button>
-                        <button class="btn btn-primary" type="submit">
-                        <i class="fas fa-edit"></i> Add Next Question </button>
-                </div>
-
-
-
-<!-- 
-                <div class="form-group">
-                    <label for="responseTextField">Answer</label>
-                    <input type="text" class="form-control"
-                    id="responseTextField"
-                    placeholder="Enter the Answer"
-                    name="response" required>
-                </div> -->
-
-
-
-                        <a href="/survey.list" class="btn btn-warning">
-                        <i class="fas fa-undo"></i> Cancel</a>
-
             </form>
+            <button id="addQues"  class="survey__create" onclick="appendQuesAns()">Add Question</button>
         </div>
 
     </div>

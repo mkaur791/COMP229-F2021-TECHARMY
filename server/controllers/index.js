@@ -1,7 +1,9 @@
 let express = require('express');
 let router = express.Router();
+
 // let Survey = require('../routes/survey');
 
+// display home page
 module.exports.displayHomePage = (req, res, next) => {
     res.render('index', {title: 'Home',path: 'home'});
 }
@@ -11,10 +13,17 @@ module.exports.displaySurveyPage = (req, res, next) => {
     // res.render('index', { title: 'Survey',path: 'home'});
 }
 
+// display add/create survey page
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/add'});
 }
 
+// process add survey page
+module.exports.processAddSurvey = (req, res, next) => {
+    console.log("request..", req.body)
+}
+
+// display edit survey page
 module.exports.displayEditSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/edit'});
 }
