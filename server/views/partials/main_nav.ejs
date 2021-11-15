@@ -1,5 +1,5 @@
 <!-- Main Navigation -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-light navbar-expand-lg">
     <a class="navbar-brand" href="/"><img id="logo" src="Assets/images/logo.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,21 +8,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
 
-        <% if (title == "Home"){ %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/home"><i class="fas fa-house-user"></i> Home </a>
-        </li>
+          <li class="nav-item">
+            <% if (title == "Home") { %>
+              <a class="nav-link active"  href="/home"><i class="fas fa-house-user"></i> Home</a>
+            <% } else { %>
+              <a class="nav-link"  href="/home"><i class="fas fa-house-user"></i> Home</a>
+            <% } %>
+          </li>
 
-        <% if (title == "Create") { %>
-        <li class="nav-item active">
-        <% } else  { %>
-        <li class="nav-item">
-        <% } %>
-          <a class="nav-link" href="/add"><i class="fas fa-plus-circle"></i> Create Survey</a>
-        </li>
+          <li class="nav-item">
+            <% if (title == "Survey") { %>
+              <a class="nav-link active"  href="/add"><i class="fas fa-plus-circle"></i> Create Survey</a>
+            <% } else { %>
+              <a class="nav-link"  href="/add"><i class="fas fa-plus-circle"></i> Create Survey</a>
+            <% } %>
+          </li>
 
     </div>
   </nav>
