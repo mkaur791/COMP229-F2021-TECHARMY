@@ -99,9 +99,19 @@ const appendQuesAns = () =>{
     let labelType =  document.createElement('label');
     labelType.innerHTML = "Question Type"
 
+    // Qustion title for flex
+    let questionDiv = document.createElement('div')
+    questionDiv.className = "questionTitle"
+    
     // creating label for Question
     let labelQues =  document.createElement('label');
     labelQues.innerHTML = "Question"
+
+    // create minusBtn
+    let minusBtn = document.createElement('i');
+    minusBtn.className = "fas fa-minus-circle";
+    minusBtn.id = "minusBtn";
+    minusBtn.onclick = removeQues;
 
     // creating input element 
     let input =  document.createElement('input');
@@ -112,7 +122,9 @@ const appendQuesAns = () =>{
     input.setAttribute("required", ""); 
     
     // appending all elements to parent div
-    div.appendChild(labelQues)
+    div.appendChild(questionDiv)
+    questionDiv.appendChild(labelQues)
+    questionDiv.appendChild(minusBtn)
     div.appendChild(input)
     div.appendChild(labelType)
     div.appendChild(createQuesTypeChoice(count))
