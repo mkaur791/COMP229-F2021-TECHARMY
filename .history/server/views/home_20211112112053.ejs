@@ -1,0 +1,43 @@
+    <!-- Home -->
+  <section id="home">
+    <h1 class="home__title">Please Let Us Know</h1>
+    <h2 class="home__description">20 million questions answered daily.</h2>
+    <button class="survey__create"><a href="/add">Create Survey</a></button>
+
+                <form class="form" method="POST">
+              <div class="form-group">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="Title"
+                placeholder="Survey Title" name="Title" value="<%= survey.Title %>" required>
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="Ques_And_List">Question Type:</label>
+                <input type="text" class="form-control" id="Ques_And_List"
+                placeholder="Question Type" name="Ques_And_List" value="<%= survey.Ques_And_List %>"  required>
+              </div>
+
+              <div class="form-group">
+                <label for="Question">Question</label>
+                <input type="text" class="form-control" id="Price"
+                placeholder="Survey Question" name="Question" value="<%= survey.Question %>"  required>
+              </div>
+
+              <div class="form-group">
+                <label for="Author">Answer</label>
+                <input type="text" class="form-control" id="Author"
+                placeholder="Survey Answer" name="Author" value="<%= survey.Response %>"  required>
+              </div>
+
+              <div class="form-group">
+                <label for="Genre">Genre</label>
+                <input type="text" class="form-control" id="Genre"
+                placeholder="Book Genre" name="Genre" value="<%= survey.Genre %>"  required>
+              </div> -->
+
+              
+              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
+              <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            </form>
+            
+  </section>

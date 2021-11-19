@@ -1,0 +1,77 @@
+<div class="container">
+    <br>
+    <h2 class="home__description text-center font-weight-bold">Create a survey</h2>
+</div>
+
+
+<!-- Work on Add -->
+
+
+<!-- Content for the Add page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="surveyTextField">Survey Title</label>
+                    <input type="text" class="form-control"
+                    id="surveyTextField"
+                    placeholder="Enter the Survey Title"
+                    name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <form action="">
+                        <label for="Ques_And_List">Question Type:</label>
+                        <!-- <select id="cars" name="cars"> -->
+                          <option value="trueFalse">True/ False</option>
+                          <option value="multiChoice">Multiple Choice </option>
+
+                        </select>
+                        <input type="submit">
+                      </form>
+                    <!-- <label for="authorTextField">Author</label>
+                    <input type="text" class="form-control"
+                    id="authorTextField"
+                    placeholder="Enter the Book's Author"
+                    name="author" required> -->
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Year</label>
+                    <input type="text" class="form-control"
+                    id="publishedTextField"
+                    placeholder="Enter the Year of Publication"
+                    name="published" required>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="descriptionTextArea">Description</label>
+                    <textarea type="text" class="form-control"
+                    id="descriptionTextArea"
+                    placeholder="Enter the a brief description of the book"
+                    name="description" required></textarea>
+                </div> -->
+
+                <div class="form-group">
+                    <label for="priceTextField">Price</label>
+                    <input type="text" class="form-control"
+                    id="priceTextField"
+                    placeholder="Enter the Book's Price"
+                    name="price" required>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+                
+                    <!-- <a href="/book-list" class="btn btn-warning"> -->
+                        <a href="/survey.list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>

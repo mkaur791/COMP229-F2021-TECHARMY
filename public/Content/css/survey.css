@@ -1,0 +1,48 @@
+form label{
+    padding: 10px 0px;
+}
+
+.question-fields {
+    background: var(--color-light-white);
+    padding: 25px;
+    position: relative;
+}
+
+.question-fields input{
+    margin-bottom: 10px;
+}
+
+.question-fields .remove-question {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--color-orange);
+}
+
+.question-fields .add-option{
+    position: absolute;
+    bottom: 25px;
+    color: var(--color-orange);
+}
+
+#addQues {
+    margin: 0px !important;
+}
+
+.container .row{
+    justify-content: center;
+}
+.add-btn-group{
+    position: absolute;
+    bottom: -75px;
+    right: 0;
+}
+
+.questionTitle{
+    display: flex;
+    justify-content: space-between;
+}
+#minusBtn{
+    text-align: right;
+    color: var(--color-orange);
+}

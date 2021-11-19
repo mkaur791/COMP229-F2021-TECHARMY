@@ -1,0 +1,32 @@
+
+
+<!-- Work on Add -->
+
+
+<!-- Content for the Add page -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10">
+            <br>
+            <h2 class="home__description text-center font-weight-bold">Create a survey</h2>
+
+            <form class="form" method="POST" id="add-form">
+                <div class="form-group">
+                    <label for="surveyTextField">Survey Title</label>
+                    <input type="text" class="form-control"
+                    id="surveyTextField"
+                    placeholder="Enter the Survey Title"
+                    name="title" required>
+                </div>
+                <input type="hidden"  name="questionCount" id="questionCount"/>
+                <div class="add-btn-group">
+                    <button type="submit" id="createSurvey"  class="survey__create">Create</button>
+                    <a href = "/" class="survey__create">Cancel</a>
+                </div>
+            </form>
+            <button id="addQues"  class="survey__create" onclick="appendQuesAns()">Add Question</button>
+        </div>
+
+    </div>
+</div>

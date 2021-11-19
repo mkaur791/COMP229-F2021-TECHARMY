@@ -9,8 +9,19 @@ router.get('/', indexController.displayHomePage);
 /* GET home page. */
 router.get('/home', indexController.displayHomePage);
 
-/* GET survey page. */
-router.get('/survey', indexController.displaySurveyPage);
+/* GET add survey page. */
+router.get('/add', indexController.displayAddSurveyPage);
 
+/* process add survey page. */
+router.post('/add', indexController.processAddSurvey);
+
+/* GET edit survey page. */
+router.get('/edit/:id', indexController.displayEditSurveyPage);
+
+/* GET route for deleting a survey. */
+router.get('/delete/:id',indexController.deleteSurvey)
 
 module.exports = router;
+
+
+/* LG - may need to update 11/02/21 */
