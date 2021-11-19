@@ -137,7 +137,10 @@ const createAddIcon = () => {
 }
 
 // remove qeustion
-const removeQues = (obj) => {
-    console.log("remove question");
-   
+const removeQues = () => {
+    $('.question-fields').click(function(){
+        let id_check = $(this).attr("id");
+        console.log(id_check);
+        $("div").remove("#"+id_check);
+    });
 }
