@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="registerContents">
+        <div class="registerCover">
+            <div class="front">
+              <img id="registerImg" src="/Assets/images/signup.png" alt="">
+            </div>
+          </div>
+          <div class="registerForms">
+              <div class="form-content">
+                  <div class="signup-form">
+                      <div class="title">Crete account</div>
+                      <form action="/signup" method="post">
+                          <div class="input-boxes">
+                              <div>
+                                  <input class="input-box" type="text" name="uname[]" placeholder="Enter your name" required>
+                              </div>
+                              <div>
+                                  <input class="input-box" type="password" name="password[]" placeholder="Enter your password" required>
+                              </div>
+                              <div>
+                                <input class="input-box" type="text" name="email[]" placeholder="Enter your email" required>
+                              </div>
+                              <div class="registerButton">
+                                <button id="registerCreate"  class="registerBtn" onclick="">Create</button>
+                                <button id="registerCancel"  class="registerBtn" onclick="">Cancel</button>
+                              </div>
+                              <div class="text sign-up-text"><a href="/login">or Sign in here</a></div>
+                          </div>
+                        
+                      </form> 
+                  </div>
+              </div>
+            </div>
+    </div>
+</div>

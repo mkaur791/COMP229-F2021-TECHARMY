@@ -1,0 +1,61 @@
+.registerContents{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    padding-top: 200px;
+}
+.registerCover{
+    display: flex;
+}
+.registerForms{
+    display: flex;
+}
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#registerImg{
+    width: 550px;
+    height: 450px;
+}
+.title{
+    display: flex;
+    color: var(--color-dark-grey);
+    font-size: 2em;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.input-box{
+    display: flex;
+    margin: 20px 0;
+    border: 2px solid #4d4d4d;
+    border-radius: var(--size-border-radius);
+    height: 45px;
+    width: 330px;
+}
+.sign-up-text{
+    color: var(--color-dark-grey);
+    text-align: center;
+}
+
+.signinBtn{
+    background-color: var(--color-light-white);
+    border: 2px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+    color: var(--color-orange);
+    font-size: var(--font-regular);
+    font-weight: var(--weight-bold);
+    margin-bottom: 30px;
+    padding-top: 8px 12px;
+    height: 35px;
+    width: 100%;
+}
+.signinBtn:hover{
+    color:var(--color-light-white);
+    background-color: var(--color-orange);
+    border: 2px solid var(--color-orange);
+    border-radius: var(--size-border-radius);
+}
