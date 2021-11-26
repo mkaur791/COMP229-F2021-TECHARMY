@@ -88,3 +88,13 @@ module.exports.deleteSurvey = function(req, res, next){
         }
     })
 }
+
+// display register page
+module.exports.displayRegisterPage = (req, res, next) => {
+    res.render('index', { title: 'Sign Up',path: 'register'});
+}
+
+// display login page
+module.exports.displayLoginPage = (req, res, next) => {
+    res.render('index', { title: 'Sign In',path: 'login'});
+}

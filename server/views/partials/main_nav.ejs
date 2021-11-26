@@ -23,5 +23,22 @@
               <a class="nav-link"  href="/add"><i class="fas fa-plus-circle"></i> Create Survey</a>
             <% } %>
           </li>
+
+          <li class="nav-item">
+            <% if (title == "Register") { %>
+              <a class="nav-link active"  href="/register"> <i class="fas fa-user-plus"></i> Sign Up</a>
+            <% } else { %>
+              <a class="nav-link"  href="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
+            <% } %>
+          </li>
+
+          <li class="nav-item">
+            <% if (title == "Login") { %>
+              <a class="nav-link active"  href="/login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            <% } else { %>
+              <a class="nav-link"  href="/login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            <% } %>
+          </li>
+
     </div>
   </nav>

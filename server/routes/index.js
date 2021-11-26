@@ -21,6 +21,13 @@ router.get('/edit/:id', indexController.displayEditSurveyPage);
 /* GET route for deleting a survey. */
 router.get('/delete/:id',indexController.deleteSurvey)
 
+/* GET register page. */
+router.get('/register', indexController.displayRegisterPage);
+
+/* GET login page. */
+router.get('/login', indexController.displayLoginPage);
+
+
 module.exports = router;
 
 

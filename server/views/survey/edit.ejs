@@ -16,10 +16,7 @@
                 <input type="hidden"  name="questionCount" id="questionCount"/>
                 <% for(let i = 1; i < survey.ques_and_list.length; i++){ %>
                     <div class="form-group question-fields" id="<%=i%>">
-                        <div class="questionTitle">
-                            <label>Question</label>
-                            <i class="fas fa-minus-circle" id="minusBtn" onclick="removeQues()"></i>
-                        </div>    
+                        <label>Question</label>
                         <input type="text" class="form-control"
                         id="question<%= i%>"
                         placeholder="Enter the Survey Title"
@@ -35,6 +32,7 @@
                             <option value="text" <% if (survey.ques_and_list[i].type == 'text') { %>selected<% } %>>Single Textbox</option>
                             <option value="mcq"   <% if (survey.ques_and_list[i].type == 'mcq') { %>selected<% } %>>Multiple Choice</option>
                         </select>
+
                     
                         <% if(survey.ques_and_list[i].options) {
                             for(let j=0;j<survey.ques_and_list[i].options.length;j++){ %>
@@ -52,7 +50,7 @@
                     <a href = "/" class="survey__create">Cancel</a>
                 </div>
             </form>
-            <button id="addQues"  class="survey__create" onclick="appendQuesAns()">Add Question</button>
+            <button id="addQues"  class="survey__create" onclick="">Add Question</button>
         </div>
 
     </div>

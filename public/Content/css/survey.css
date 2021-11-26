@@ -37,12 +37,3 @@ form label{
     bottom: -75px;
     right: 0;
 }
-
-.questionTitle{
-    display: flex;
-    justify-content: space-between;
-}
-#minusBtn{
-    text-align: right;
-    color: var(--color-orange);
-}
