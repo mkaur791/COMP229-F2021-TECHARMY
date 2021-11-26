@@ -42,32 +42,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
-// setup session
-app.use(session({
-  secret: 'Secret',
-  saveUninitialized: false,
-  resave: false
-}))
-
-// initialize flash
-app.use(flash());
-
-//initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-//passport user configuration
-
-let userModel = require('../models/user');
-let user = userModel.User;
-
-// create strategy
-passport.use(user.createStrategy());
-
-// serialize user
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
-
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/survey', surveyRouter);

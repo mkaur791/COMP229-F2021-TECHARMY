@@ -2,8 +2,6 @@ let express = require('express');
 let router = express.Router();
 let Survey = require('../models/survey')
 
-let passport = require('passport');
-
 // let Survey = require('../routes/survey');
 
 // display home page

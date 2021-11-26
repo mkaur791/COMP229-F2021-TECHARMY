@@ -2,8 +2,6 @@ let express = require('express');
 let router = express.Router();
 let Survey = require('../models/survey')
 
-let passport = require('passport');
-
 // let Survey = require('../routes/survey');
 
 // display home page
@@ -104,7 +102,7 @@ module.exports.deleteSurvey = function(req, res, next){
 module.exports.displayLoginPage = (req,res,next) => {
     // check if user is already logged in
     if(!req.user){
-        res.render('index',{title:'Sign In', path:'login',messages:req.flash('loginMessage'),username: req.user? req.user.username : ''})
+        res.render('auth/login',{title:'Login',page:'login',messages:req.flash('loginMessage'),username: req.user? req.user.username : ''})
     }
     else{
         return res.redirect('/');
@@ -128,7 +126,7 @@ module.exports.processLoginPage = (req,res,next) => {
                 // server error
                 return next(err);
             }
-            return res.redirect('/');
+            return res.redirect('/contact-list');
         })
     })(req,res,next);
 }
