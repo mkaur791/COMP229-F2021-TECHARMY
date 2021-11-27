@@ -95,49 +95,5 @@ module.exports.deleteSurvey = function(req, res, next){
 }
 
 //--------------------------------------------------------------add Tom's
-module.exports.displayLoginPage = (req,res,next) => {
-    //check if the user is already logged in
-    if(!req.user)
-    {
-        res.render('/login',
-            {
-                title: "Login",
-                messages: req.flash('loginMessage'),
-                displayName : req.user ? req.user.displayName : ''
-        })
-    }
-    else
-    {
-        return res.redirect('/');
-    }
-}
 
-module.exports.processLoginPage = (req,res,next) => {
-    passport.authenticate('local',
-    (err, user, info) => {
-        //server error
-        if(err)
-        {
-            return next(err);
-        }
-        //is there a user login error?
-        if(!user)
-        {
-            req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('/login');
-        }
-        req.login(user, (err) => {
-            //server error?
-            if(err)
-            {
-                return next(err);
-            }
-            return res.redirect('/survey/edit');
-        })
-    }
-    )(req, res, next);
-}
 
-module.exports.displayRegisterPage = (req,res,next) => {}
-
-module.exports.processLoginPage = (req,res,next) => {}

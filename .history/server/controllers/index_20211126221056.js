@@ -126,18 +126,6 @@ module.exports.processLoginPage = (req,res,next) => {
             req.flash('loginMessage', 'Authentication Error');
             return res.redirect('/login');
         }
-        req.login(user, (err) => {
-            //server error?
-            if(err)
-            {
-                return next(err);
-            }
-            return res.redirect('/survey/edit');
-        })
     }
-    )(req, res, next);
+    )
 }
-
-module.exports.displayRegisterPage = (req,res,next) => {}
-
-module.exports.processLoginPage = (req,res,next) => {}

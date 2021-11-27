@@ -135,9 +135,5 @@ module.exports.processLoginPage = (req,res,next) => {
             return res.redirect('/survey/edit');
         })
     }
-    )(req, res, next);
+    )
 }
-
-module.exports.displayRegisterPage = (req,res,next) => {}
-
-module.exports.processLoginPage = (req,res,next) => {}

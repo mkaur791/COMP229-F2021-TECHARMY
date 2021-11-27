@@ -23,10 +23,10 @@ router.get('/delete/:id',indexController.deleteSurvey)
 
 //--------------------------------------------------------------add Tom's
 /* GET Route for displaying the Login page */
-router.get('/login', indexController.displayLoginPage);
+router.get('/login', indexController.displayAddPage);
 
 /* GET Route for processing the Login page */
-router.post('/login', indexController.processLoginPage);
+router.post('/login', indexController.processAddPage);
 
 /* GET Route for displaying the Register page */
 router.get('/register', indexController.displayAddPage);
@@ -34,7 +34,7 @@ router.get('/register', indexController.displayAddPage);
 /* GET Route for displaying the Register page */
 router.post('/register', indexController.processAddPage);
 
-/* GET to perform UserLogout operation */
-router.get('/logout', indexController.performLogout);
+/* GET to perform Deletion - Delete operation */
+router.get('/delete/:id', indexController.performDelete);
 
 module.exports = router;
