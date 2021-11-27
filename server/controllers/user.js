@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let Survey = require('../models/survey')
+let User = require('../models/user')
 
 let passport = require('passport');
 
@@ -45,16 +45,37 @@ module.exports.displayRegisterPage = (req, res, next) => {
 // process register page
 module.exports.processRegister = (req, res, next) => {
 
-    let userName = req.body.Username
-    let password = req.body.Password
-    let email = req.body.Email
-
-    // creating survey object for database storage
-    let newUser = User({
-        userName,
-        password,
-        email,
-    })
+    try {
+        const {username, password, email} = req.body
+        console.log(req.body);
+        if (!username || !password || !email ) {
+            console.log("Invalid body fields");
+            return done(null, false);
+        }
+        const query = {
+            $or: [{ username: username }, { email: email }]
+        };
+        console.log(query);
+        const user = user.findOne(query);
+        if (user) {
+            console.log("User already exists!");
+            console.log(user);
+            return done(null, false);
+        }
+        else {
+            const userData = {
+                username,
+                password,
+                email,
+            };
+            const newUser = new user(userData);
+            newUser.save();
+            res.redirect('/');
+        }
+      }
+      catch (error) {
+        console.log(error)
+      }
 
 }
 

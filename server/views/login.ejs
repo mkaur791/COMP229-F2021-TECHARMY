@@ -1,11 +1,16 @@
 <div class="container">
+    <% if(messages.length > 0) { %>
+        <div class="alert alert-danger">
+            <%= messages %>
+        </div>
+    <% } %>
     <div class="registerContents">
         
           <div class="registerForms">
               <div class="form-content">
                   <div class="signup-form">
                       <div class="title">Sign in to Please Let Us Know</div>
-                      <form action="/signup" method="post">
+                      <form action="/login" method="post">
                           <div class="input-boxes">
                               <div>
                                   <input class="input-box" type="text" name="username" placeholder="Enter Username" required>
