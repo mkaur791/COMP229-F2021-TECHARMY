@@ -63,12 +63,6 @@ module.exports.processRegister = (req, res, next) => {
                 );  
                 return res.redirect('/register');              
             }
-            // return res.render('register', 
-            // {
-            //     title: 'Register',
-            //     messages: req.flash('registerMessage'),
-            //     username: req.user? req.user.username : ''
-            // })
         }
         else
         {

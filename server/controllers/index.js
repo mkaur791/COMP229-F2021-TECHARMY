@@ -2,15 +2,21 @@ let Survey = require('../models/survey')
 
 // display home page
 module.exports.displayHomePage = (req, res, next) => {
-    Survey.find((err, surveyList) => {
-        if(err){
-            return console.error(err);
-        }
-        else{
-            console.log("surveyList",surveyList)
-            res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
-        }
-    })
+    let userId = req.user && req.user._id
+    if(userId){
+        Survey.find({ 'userid': userId },(err, surveyList) => {
+            if(err){
+                return console.error(err);
+            }
+            else{
+                console.log("surveyList",surveyList)
+                res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            }
+        })
+    }
+    else{
+        res.render('index', {title: 'Home',path: 'home'})
+    }
 }
 
 // display add/create survey page
@@ -41,6 +47,7 @@ module.exports.processAddSurvey = (req, res, next) => {
         ques_and_list:data,
         responses:0,
         questions: data.length,
+        userid: req.user._id,
         created: new Date(),
         updated: new Date()
     })

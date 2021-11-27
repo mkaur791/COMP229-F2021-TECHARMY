@@ -6,6 +6,7 @@
     <% if(typeof username == 'string' && username){ %>
           
         <div class="container">
+            <% if(SurveyList.length) {%>
             <br>
             <h2 class="home__description text-center font-weight-bold">Survey List</h2>
             <table class="table table-hover table-bordered text-center">
@@ -44,6 +45,11 @@
                 <% } %>
             </tbody>
             </table>
+            <%} else {%>
+                <div>There is no list of surveys.<br>
+                    Please click the button above to add your first survey
+                </div>
+            <% } %>
         </div>
     <% } %>
 
