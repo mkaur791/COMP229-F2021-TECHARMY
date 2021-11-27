@@ -4,15 +4,11 @@ let mongoose = require('mongoose');
 
 // define the user model
 let user = require('../models/user');
+let userController = require('../controllers/user');
 
-//  GET the User Details page in order to Register
-router.get('/signup', (req, res, next) => {
-//rename according to ejs
-    res.render('/signup', {title: 'Register', 
-    user: '' 
-  })
 
-});
+/* GET register page. */
+router.get('/signup', userController.displayRegisterPage);
 
 // POST process the User List page and create a new User - CREATE
 router.post('/signup', (req, res, next) => {
@@ -50,15 +46,14 @@ catch (error) {
 
 });
 
+/* GET login page. */
+router.get('/signin', userController.displayLoginPage);
+/* POST Login  */
+router.post('/signin',userController.processLoginPage);
+
+/* Logout route */
+router.get('/logout',userController.logoutUser);
+
 module.exports = router;
 
 
-// var express = require('express');
-// var router = express.Router();
-
-// /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('Placeholder');
-// });
-
-// module.exports = router;
