@@ -39,44 +39,47 @@ module.exports.processLoginPage = (req,res,next) => {
 
 // display register page
 module.exports.displayRegisterPage = (req, res, next) => {
-    res.render('index', { title: 'Sign Up',path: 'register'});
+    res.render('index', { title: 'Sign Up',path: 'register',messages: req.flash('registerMessage'),username: req.user? req.user.username : ''});
 }
 
 // process register page
 module.exports.processRegister = (req, res, next) => {
+    let newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+    });
 
-    try {
-        const {username, password, email} = req.body
-        console.log(req.body);
-        if (!username || !password || !email ) {
-            console.log("Invalid body fields");
-            return done(null, false);
+    User.register(newUser, req.body.password, (err) => {
+        if(err)
+        {
+            console.log("Error: Inserting New User");            
+            if(err.name == "UserExistsError")
+            {
+                console.log('Error: User Already Exists!')
+                req.flash(
+                    'registerMessage',
+                    'Registration Error: User Already Exists!'
+                );  
+                return res.redirect('/register');              
+            }
+            // return res.render('register', 
+            // {
+            //     title: 'Register',
+            //     messages: req.flash('registerMessage'),
+            //     username: req.user? req.user.username : ''
+            // })
         }
-        const query = {
-            $or: [{ username: username }, { email: email }]
-        };
-        console.log(query);
-        const user = user.findOne(query);
-        if (user) {
-            console.log("User already exists!");
-            console.log(user);
-            return done(null, false);
-        }
-        else {
-            const userData = {
-                username,
-                password,
-                email,
-            };
-            const newUser = new user(userData);
-            newUser.save();
-            res.redirect('/');
-        }
-      }
-      catch (error) {
-        console.log(error)
-      }
+        else
+        {
+            //if no error exists, then registration is successful
+            //redirect the user and authenticate them
 
+            return passport.authenticate('local')(req, res, () => {
+                res.redirect('/')
+            })
+        }
+    })
 }
 
 

@@ -6,6 +6,7 @@ let mongoose = require('mongoose');
 let user = require('../models/user');
 let userController = require('../controllers/user');
 
+
 /* GET register page. */
 router.get('/register', userController.displayRegisterPage);
 

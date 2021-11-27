@@ -1,13 +1,4 @@
-let Survey = require('../models/survey');
-// let router = express.Router();
-//-------Toms
-let mongoose = require('mongoose');
-let passport = require('passport');
-
-//-------Toms
-//create the User Model instance
-let User = require('../models/user');
-let user = User.User;
+let Survey = require('../models/survey')
 
 // display home page
 module.exports.displayHomePage = (req, res, next) => {
@@ -17,14 +8,14 @@ module.exports.displayHomePage = (req, res, next) => {
         }
         else{
             console.log("surveyList",surveyList)
-            res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList});
+            res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
         }
     })
 }
 
 // display add/create survey page
 module.exports.displayAddSurveyPage = (req, res, next) => {
-    res.render('index', { title: 'Survey',path: 'survey/add'});
+    res.render('index', { title: 'Survey',path: 'survey/add',username: req.user? req.user.username : ''});
 }
 
 // process add survey page
@@ -76,7 +67,7 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
             res.end(err);
         } else {
             console.log('surveyToEdit', surveyToEdit)
-            res.render('index', { title: 'Survey',path: 'survey/edit', survey:surveyToEdit});
+            res.render('index', { title: 'Survey',path: 'survey/edit', survey:surveyToEdit,username: req.user? req.user.username : ''});
         }
     })
 }
@@ -94,107 +85,3 @@ module.exports.deleteSurvey = function(req, res, next){
     })
 }
 
-//--------------------------------------------------------------add Tom's
-module.exports.displayLoginPage = (req,res,next) => {
-    //check if the user is already logged in
-    if(!req.user)
-    {
-        res.render('login',
-            {
-                title: "Login",
-                messages: req.flash('loginMessage'),
-                // userName : req.user ? req.user.username : ''
-        })
-    }
-    else
-    {
-        return res.redirect('/');
-    }
-}
-
-module.exports.processLoginPage = (req,res,next) => {
-    passport.authenticate('local',
-    (err, user, info) => {
-        //server error
-        if(err)
-        {
-            return next(err);
-        }
-        //is there a user login error?
-        if(!user)
-        {
-            req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('login');
-        }
-        req.login(user, (err) => {
-            //server error?
-            if(err)
-            {
-                return next(err);
-            }
-            return res.redirect('survey');
-        })
-    }
-    )(req, res, next);
-}
-
-module.exports.displayRegisterPage = (req,res,next) => {
-    //check if the user is not already logged in
-    if(!req.user)
-    {
-        res.render('register',
-        {
-            title: 'Register',
-            messages: req.flash('registerMessage'),
-            // userName : req.user ? req.user.username : ''
-        });
-    }
-    else
-    {
-        return res.direct('/');
-    }
-}
-
-module.exports.processRegisterPage = (req,res,next) => {
-    //instantiate a user object 
-    let newUser = new User({
-        userName: req.body.userName,
-        //password hashed in registration
-        email: req.body.email,
-    });
-
-    User.register(newUser, req.body.password, (err) => {
-        if(err)
-        {
-            console.log("Error: Inserting New User");            
-            if(err.name == "UserExistsError")
-            {
-                req.flash(
-                    'registerMessage',
-                    'Registration Error: User Already Exists!'
-                );
-                console.log('Error: User Already Exists!')
-            }
-            return res.render('register', 
-            {
-                title: 'Register',
-                messages: req.flash('registerMessage'),
-                // userName : req.user ? req.user.username : ''
-            })
-        }
-        else
-        {
-            //if no error exists, then registration is successful
-            //redirect the user and authenticate them
-
-            return passport.authenticate('local')(req, res, () => {
-                res.redirect('survey')
-            })
-        }
-    })
-}
-
-module.exports.performLogout = (req,res,next) => {
-    req.logout();
-    res.redirect('/');
-}

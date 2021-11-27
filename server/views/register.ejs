@@ -7,6 +7,11 @@
           </div>
           <div class="registerForms">
               <div class="form-content">
+                    <% if(messages.length > 0) { %>
+                        <div class="alert alert-danger">
+                            <%= messages %>
+                        </div>
+                    <% } %>
                   <div class="signup-form">
                       <div class="title">Create account</div>
                       <form action="/register" method="post">
@@ -21,7 +26,7 @@
                                 <input class="input-box" type="text" name="email" placeholder="Enter your email" required>
                               </div>
                               <div class="registerButton">
-                                <button id="registerCreate"  class="registerBtn" onclick="">Create</button>
+                                <button id="registerCreate"  class="registerBtn" >Create</button>
                                 <button id="registerCancel"  class="registerBtn" onclick="">Cancel</button>
                               </div>
                               <div class="text sign-up-text"><a href="/login">or Sign in here</a></div>

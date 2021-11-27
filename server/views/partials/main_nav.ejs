@@ -24,6 +24,11 @@
             <% } %>
           </li>
 
+        <% if(typeof username == 'string' && username){ %>
+          <li class="nav-item">
+              <a class="nav-link active"  href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+          </li>
+         <% } else{ %>
           <li class="nav-item">
             <% if (title == "Sign Up") { %>
               <a class="nav-link active"  href="/register"> <i class="fas fa-user-plus"></i> Sign Up</a>
@@ -31,12 +36,6 @@
               <a class="nav-link"  href="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
             <% } %>
           </li>
-
-        <% if(typeof username == 'string' && username){ %>
-          <li class="nav-item">
-              <a class="nav-link active"  href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
-          </li>
-         <% } else{ %>
           <li class="nav-item">
             <% if (title == "Sign In") { %>
               <a class="nav-link active"  href="/login"><i class="fas fa-sign-in-alt"></i> Sign In</a>

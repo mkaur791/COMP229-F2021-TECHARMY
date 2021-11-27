@@ -2,6 +2,7 @@
 
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
+const bcrypt = require('bcrypt');
 
 let User = mongoose.Schema(
     {
@@ -44,10 +45,21 @@ let User = mongoose.Schema(
 
 );
 
+User.pre('save', async function (next) {
+    const hash = await bcrypt.hash(this.password, 10);
+    this.password = hash;
+    next();
+});
+
+User.methods.isValidPassword = async function (password) {
+    const compare = await bcrypt.compare(password, this.password);
+    return compare;
+};
+
 //Configure option for User Model
 
 let options = ({missingPasswordError: 'Wrong / Missing Password'});
 
 User.plugin(passportLocalMongoose, options);
 
-module.exports.User = mongoose.model('User', User);
+module.exports = mongoose.model('User', User);
