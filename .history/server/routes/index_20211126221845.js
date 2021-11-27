@@ -32,7 +32,7 @@ router.post('/login', indexController.processLoginPage);
 router.get('/register', indexController.displayRegisterPage);
 
 /* GET Route for displaying the Register page */
-router.post('/register', indexController.processRegisterPage);
+router.post('/register', indexController.processAddPage);
 
 /* GET to perform UserLogout operation */
 router.get('/logout', indexController.performLogout);

@@ -167,7 +167,7 @@ module.exports.processRegisterPage = (req,res,next) => {
     User.register(newUser, req.body.password, (user) => {
         if(err)
         {
-            console.log("Error: Inserting New User");            
+            console.log("Error: Insertin New User");            
             if(err.name == "UserExistsError")
             {
                 req.flash(
@@ -186,6 +186,7 @@ module.exports.processRegisterPage = (req,res,next) => {
         else
         {
             //if no error exists, then registration is successful
+
             //redirect the user and authenticate them
 
             return passport.authenticate('local')(req, res, () => {
@@ -193,9 +194,4 @@ module.exports.processRegisterPage = (req,res,next) => {
             })
         }
     })
-}
-
-module.exports.performLogout = (req,res,next) => {
-    req.logout();
-    res.redirect('/');
 }

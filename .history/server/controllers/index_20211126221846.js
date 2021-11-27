@@ -155,47 +155,4 @@ module.exports.displayRegisterPage = (req,res,next) => {
     }
 }
 
-module.exports.processRegisterPage = (req,res,next) => {
-    //instantiate a user object 
-    let newUser = new User({
-        username: req.body.username,
-        //password hashed in registration
-        email: req.body.email,
-        displayName: req.body.displayName
-    });
-
-    User.register(newUser, req.body.password, (user) => {
-        if(err)
-        {
-            console.log("Error: Inserting New User");            
-            if(err.name == "UserExistsError")
-            {
-                req.flash(
-                    'registerMessage',
-                    'Registration Error: User Already Exists!'
-                );
-                console.log('Error: User Already Exists!')
-            }
-            return res.render('/register', 
-            {
-                title: 'Register',
-                messages: req.flash('registerMessage'),
-                displayName: req.user ? req.user.displayName : ''
-            })
-        }
-        else
-        {
-            //if no error exists, then registration is successful
-            //redirect the user and authenticate them
-
-            return passport.authenticate('local')(req, res, () => {
-                res.redirect('/survey/edit')
-            })
-        }
-    })
-}
-
-module.exports.performLogout = (req,res,next) => {
-    req.logout();
-    res.redirect('/');
-}
+module.exports.processLoginPage = (req,res,next) => {}
