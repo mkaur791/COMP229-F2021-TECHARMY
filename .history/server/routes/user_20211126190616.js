@@ -5,7 +5,7 @@ let mongoose = require('mongoose');
 // define the user model
 let user = require('../models/user');
 
-//  GET the User Details page in order to Register
+//  GET the User Details page in order to add a new User
 router.get('/signup', (req, res, next) => {
 //rename according to ejs
     res.render('/signup', {title: 'Register', 

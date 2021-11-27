@@ -58,8 +58,8 @@ app.use(passport.session());
 
 //passport user configuration
 
-let User = require('../models/user');
-let user = User.User;
+let userModel = require('../models/user');
+let user = userModel.User;
 
 // create strategy
 passport.use(user.createStrategy());

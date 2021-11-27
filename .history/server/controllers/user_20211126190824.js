@@ -1,9 +1,3 @@
-let express = require('express');
-let router = express.Router();
-let Survey = require('../models/survey')
-
-let passport = require('passport');
-
 // display login page
 module.exports.displayLoginPage = (req, res, next) => {
     res.render('index', { title: 'Sign In',path: '/login'});
@@ -24,5 +18,3 @@ module.exports.processRegister = (req, res, next) => {
     })
 
 }
-
-
