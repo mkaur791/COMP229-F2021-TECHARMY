@@ -163,7 +163,7 @@ module.exports.processRegisterPage = (req,res,next) => {
         email: req.body.email,
     });
 
-    User.register(newUser, req.body.password, (err) => {
+    User.register(newUser, req.body.password, (user) => {
         if(err)
         {
             console.log("Error: Inserting New User");            

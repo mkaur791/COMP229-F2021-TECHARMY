@@ -99,11 +99,11 @@ module.exports.displayLoginPage = (req,res,next) => {
     //check if the user is already logged in
     if(!req.user)
     {
-        res.render('login',
+        res.render('/login',
             {
                 title: "Login",
                 messages: req.flash('loginMessage'),
-                // userName : req.user ? req.user.username : ''
+                displayName : req.user ? req.user.displayName : ''
         })
     }
     else
@@ -124,7 +124,7 @@ module.exports.processLoginPage = (req,res,next) => {
         if(!user)
         {
             req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('login');
+            return res.redirect('/login');
         }
         req.login(user, (err) => {
             //server error?
@@ -132,7 +132,7 @@ module.exports.processLoginPage = (req,res,next) => {
             {
                 return next(err);
             }
-            return res.redirect('survey');
+            return res.redirect('/survey');
         })
     }
     )(req, res, next);
@@ -142,11 +142,11 @@ module.exports.displayRegisterPage = (req,res,next) => {
     //check if the user is not already logged in
     if(!req.user)
     {
-        res.render('register',
+        res.render('/register',
         {
             title: 'Register',
             messages: req.flash('registerMessage'),
-            // userName : req.user ? req.user.username : ''
+            displayName: req.user ? req.user.displayName : ''
         });
     }
     else
@@ -158,12 +158,13 @@ module.exports.displayRegisterPage = (req,res,next) => {
 module.exports.processRegisterPage = (req,res,next) => {
     //instantiate a user object 
     let newUser = new User({
-        userName: req.body.userName,
+        username: req.body.username,
         //password hashed in registration
         email: req.body.email,
+        displayName: req.body.displayName
     });
 
-    User.register(newUser, req.body.password, (err) => {
+    User.register(newUser, req.body.password, (user) => {
         if(err)
         {
             console.log("Error: Inserting New User");            
@@ -175,11 +176,11 @@ module.exports.processRegisterPage = (req,res,next) => {
                 );
                 console.log('Error: User Already Exists!')
             }
-            return res.render('register', 
+            return res.render('/register', 
             {
                 title: 'Register',
                 messages: req.flash('registerMessage'),
-                // userName : req.user ? req.user.username : ''
+                displayName: req.user ? req.user.displayName : ''
             })
         }
         else
@@ -188,7 +189,7 @@ module.exports.processRegisterPage = (req,res,next) => {
             //redirect the user and authenticate them
 
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('survey')
+                res.redirect('/survey')
             })
         }
     })

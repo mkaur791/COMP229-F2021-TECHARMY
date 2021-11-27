@@ -103,7 +103,7 @@ module.exports.displayLoginPage = (req,res,next) => {
             {
                 title: "Login",
                 messages: req.flash('loginMessage'),
-                // userName : req.user ? req.user.username : ''
+                displayName : req.user ? req.user.displayName : ''
         })
     }
     else
@@ -146,7 +146,7 @@ module.exports.displayRegisterPage = (req,res,next) => {
         {
             title: 'Register',
             messages: req.flash('registerMessage'),
-            // userName : req.user ? req.user.username : ''
+            displayName: req.user ? req.user.displayName : ''
         });
     }
     else
@@ -158,12 +158,13 @@ module.exports.displayRegisterPage = (req,res,next) => {
 module.exports.processRegisterPage = (req,res,next) => {
     //instantiate a user object 
     let newUser = new User({
-        userName: req.body.userName,
+        username: req.body.username,
         //password hashed in registration
         email: req.body.email,
+        displayName: req.body.displayName
     });
 
-    User.register(newUser, req.body.password, (err) => {
+    User.register(newUser, req.body.password, (user) => {
         if(err)
         {
             console.log("Error: Inserting New User");            
@@ -179,7 +180,7 @@ module.exports.processRegisterPage = (req,res,next) => {
             {
                 title: 'Register',
                 messages: req.flash('registerMessage'),
-                // userName : req.user ? req.user.username : ''
+                displayName: req.user ? req.user.displayName : ''
             })
         }
         else

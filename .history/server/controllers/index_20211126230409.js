@@ -158,12 +158,13 @@ module.exports.displayRegisterPage = (req,res,next) => {
 module.exports.processRegisterPage = (req,res,next) => {
     //instantiate a user object 
     let newUser = new User({
-        userName: req.body.userName,
+        username: req.body.username,
         //password hashed in registration
         email: req.body.email,
+        displayName: req.body.displayName
     });
 
-    User.register(newUser, req.body.password, (err) => {
+    User.register(newUser, req.body.password, (user) => {
         if(err)
         {
             console.log("Error: Inserting New User");            

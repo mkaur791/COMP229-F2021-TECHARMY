@@ -16,7 +16,6 @@ function requireAuth(req, res, next)
     {
         return res.redirect('/login')
     }
-    next();
 }
 //
 
@@ -27,16 +26,16 @@ router.get('/', indexController.displayHomePage);
 router.get('/home', indexController.displayHomePage);
 
 /* GET add survey page. */
-router.get('/add', requireAuth, indexController.displayAddSurveyPage);
+router.get('/add', indexController.displayAddSurveyPage);
 
 /* process add survey page. */
-router.post('/add', requireAuth, indexController.processAddSurvey);
+router.post('/add', indexController.processAddSurvey);
 
 /* GET edit survey page. */
-router.get('/edit/:id', requireAuth, indexController.displayEditSurveyPage);
+router.get('/edit/:id', indexController.displayEditSurveyPage);
 
 /* GET route for deleting a survey. */
-router.get('/delete/:id', requireAuth, indexController.deleteSurvey)
+router.get('/delete/:id',indexController.deleteSurvey)
 
 //--------------------------------------------------------------add Tom's
 /* GET Route for displaying the Login page */
