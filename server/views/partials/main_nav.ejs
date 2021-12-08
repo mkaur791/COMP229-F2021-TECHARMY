@@ -23,7 +23,17 @@
               <a class="nav-link"  href="/add"><i class="fas fa-plus-circle"></i> Create Survey</a>
             <% } %>
           </li>
-
+          
+          <% if(typeof username == 'string' && username){ %>
+          <li class="nav-item">
+            <% if (title == "My Surveys") { %>
+              <a class="nav-link active"  href="/surveys"><i class="fas fa-plus-circle"></i> My Surveys</a>
+            <% } else { %>
+              <a class="nav-link"  href="/surveys"><i class="fas fa-plus-circle"></i> My Surveys</a>
+            <% } %>
+          </li>
+          <% } %>
+          
         <% if(typeof username == 'string' && username){ %>
           <li class="nav-item">
               <a class="nav-link active"  href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
