@@ -2,6 +2,11 @@ let Survey = require('../models/survey')
 
 // display home page
 module.exports.displayHomePage = (req, res, next) => {
+    res.render('index', {title: 'Home',path: 'home', username: req.user? req.user.username : ''});
+}
+
+// display all surveys page
+module.exports.showSurveys = (req, res, next) => {
     let userId = req.user && req.user._id
     if(userId){
         Survey.find({ 'userid': userId },(err, surveyList) => {
