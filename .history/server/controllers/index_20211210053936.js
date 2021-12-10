@@ -93,15 +93,52 @@ module.exports.deleteSurvey = function(req, res, next){
 }
 
 // display all surveys in home page when signed in (edit 1)
+// module.exports.displayAllSurveyPage = (req, res, next) => {
+//         Survey.find((err, surveyList) => {
+//             if(err){
+//                 return console.error(err);
+//             }
+//             else{
+//                 console.log("surveyList",surveyList)
+//                 res.render('index', {title: 'All Surveys',path: '/homeORIGIN',SurveyList:surveyList,username: req.user? req.user.username : ''});
+//             }
+//         })
+
+// }
+
+// display all surveys in home page(edit 2)
 module.exports.displayAllSurveyPage = (req, res, next) => {
-    let userId = req.user && req.user._id
         Survey.find((err, surveyList) => {
             if(err){
                 return console.error(err);
             }
             else{
                 console.log("surveyList",surveyList)
-                res.render('index', {title: 'All Surveys',path: 'display',SurveyList:surveyList,username: req.user? req.user.username : ''});
+
+                res.render('index', {title: 'Survey List',
+                path: 'display',
+                SurveyList:surveyList
+            });
             }
         })
+
 }
+
+// display all surveys in home page(edit 3)
+// module.exports.displayHomePage = (req, res, next) => {
+//     let userId = req.user && req.user._id
+//     if(userId){
+//         Survey.find({ 'userid': userId },(err, surveyList) => {
+//             if(err){
+//                 return console.error(err);
+//             }
+//             else{
+//                 console.log("surveyList",surveyList)
+//                 res.render('index', {title: 'Display',path: 'display',SurveyList:surveyList,username: req.user? req.user.username : ''});
+//             }
+//         })
+//     }
+//     else{
+//         res.render('index', {title: 'Home',path: 'home'})
+//     }
+// }

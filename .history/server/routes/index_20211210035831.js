@@ -14,8 +14,7 @@ function requireAuth(req,res,next){
 router.get('/', indexController.displayHomePage);
 
 /* GET home page. */
-// router.get('/home', indexController.displayHomePage);
-router.get('/home', indexController.displayAllSurveyPage);
+router.get('/home', indexController.displayHomePage);
 
 /* GET add survey page. */
 router.get('/add',requireAuth, indexController.displayAddSurveyPage);
@@ -29,8 +28,8 @@ router.get('/edit/:id',requireAuth, indexController.displayEditSurveyPage);
 /* GET route for deleting a survey. */
 router.get('/delete/:id',requireAuth,indexController.deleteSurvey)
 
-// /* GET route to display all survey page. */
-// router.get('/display', requireAuth, indexController.displayAllSurveyPage);
+// /* GET userhome page. */
+// router.get('/userHome', requireAuth,indexController.userHomePage);
 
 
 

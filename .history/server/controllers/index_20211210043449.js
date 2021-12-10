@@ -92,16 +92,21 @@ module.exports.deleteSurvey = function(req, res, next){
     })
 }
 
-// display all surveys in home page when signed in (edit 1)
+// display all surveys in home page when signed in
 module.exports.displayAllSurveyPage = (req, res, next) => {
     let userId = req.user && req.user._id
-        Survey.find((err, surveyList) => {
+    if(userId){
+        Survey.find({ 'userid': userId },(err, surveyList) => {
             if(err){
                 return console.error(err);
             }
             else{
                 console.log("surveyList",surveyList)
-                res.render('index', {title: 'All Surveys',path: 'display',SurveyList:surveyList,username: req.user? req.user.username : ''});
+                res.render('index', {title: 'AllSurvey',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
             }
         })
+    }
+    else{
+        res.render('index', {title: 'Home',path: 'home'})
+    }
 }
