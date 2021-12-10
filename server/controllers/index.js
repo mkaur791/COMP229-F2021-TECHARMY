@@ -93,7 +93,4 @@ module.exports.deleteSurvey = function(req, res, next){
     })
 }
 
-// display updateAccount page
-module.exports.displayUpdatePage = (req, res, next) => {
-    res.render('index', {title: 'update',path: 'update',user:req.user});
-}
+

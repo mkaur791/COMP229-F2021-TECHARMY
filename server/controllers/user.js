@@ -75,6 +75,15 @@ module.exports.processRegister = (req, res, next) => {
     })
 }
 
+// display update profile page
+module.exports.displayUpdateProfilePage = (req, res, next) => {
+    res.render('index', {title: 'update',path: 'update',user:req.user,username: req.user? req.user.username : ''});
+}
+
+// process update profile page
+module.exports.processUpdateProfilePage = (req, res, next) => {
+    console.log("user...",req.body)
+}
 
 module.exports.logoutUser = (req,res,next) => {
     req.logout();

@@ -9,24 +9,25 @@
               <div class="form-content">
                   <div class="update-form">
                       <div class="title">Update Your Account</div>
-                      <form action="/signup" method="post">
+                      <form action="/update" method="post">
                           <div class="input-boxes">
                               <div>
-                                <h6>* Email</h6>
+                                <h6>Email</h6>
                                 <input class="input-box" type="text" name="email" value="<%= user.email %>" required>
                               </div>
                               <div>
-                                <h6>* User Name</h6>
-                                <input class="input-box" type="text" name="username" value=" <%= user.username %>" required>
+                                <h6>User Name (This cannot be changed)</h6>
+                                <input disabled class="input-box" type="text" name="username" value=" <%= user.username %>" required>
                               </div>
                               <div>
-                                <h6>* Current Password</h6>
+                                <h6>Current Password</h6>
                                 <input class="input-box" type="password" name="password" placeholder=" Enter Current Password" required>
                               </div>
                               <div>
-                                <h6>* New Password</h6>
+                                <h6>New Password</h6>
                                 <input class="input-box" type="password" name="newPassword" placeholder=" Enter New Password" required>
                               </div>
+                              <input type="hidden" name="id" value="<%= user._id %>" />
                               <div class="updateButton">
                                 <button class="updateBtn" onclick="">Create</button>
                                 <button class="updateBtn" onclick="">Cancel</button>
