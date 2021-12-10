@@ -15,7 +15,7 @@ router.get('/', indexController.displayHomePage);
 
 /* GET home page. */
 // router.get('/home', indexController.displayHomePage);
-router.get('/home', indexController.displayHomePage);
+router.get('/display', indexController.displayHomePage);
 
 /* GET add survey page. */
 router.get('/add',requireAuth, indexController.displayAddSurveyPage);

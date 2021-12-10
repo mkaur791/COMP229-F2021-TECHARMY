@@ -101,7 +101,7 @@ module.exports.displayHomePage = (req, res, next) => {
             }
             else{
                 console.log("surveyList",surveyList)
-                res.render('index', {title: 'All Surveys',path: 'display',SurveyList:surveyList, username: req.user? req.user.username : ''});
+                res.render('index', {title: 'All Surveys',path: 'display',SurveyList:surveyList,username: req.user? req.user.username : ''});
             }
         })
 }
