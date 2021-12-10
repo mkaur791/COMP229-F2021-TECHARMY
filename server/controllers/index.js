@@ -2,11 +2,6 @@ let Survey = require('../models/survey')
 
 // display home page
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home',path: 'home', username: req.user? req.user.username : ''});
-}
-
-// display all surveys page
-module.exports.showSurveys = (req, res, next) => {
     let userId = req.user && req.user._id
     if(userId){
         Survey.find({ 'userid': userId },(err, surveyList) => {
@@ -21,6 +16,25 @@ module.exports.showSurveys = (req, res, next) => {
     }
     else{
         res.render('index', {title: 'Home',path: 'home'})
+    }
+}
+
+// display my surveys page
+module.exports.displayMySurveysPage = (req, res, next) => {
+    let userId = req.user && req.user._id
+    if(userId){
+        Survey.find({ 'userid': userId },(err, surveyList) => {
+            if(err){
+                return console.error(err);
+            }
+            else{
+                console.log("surveyList",surveyList)
+                res.render('index', {title: 'My Surveys',path: 'mySurveys',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            }
+        })
+    }
+    else{
+        res.render('index', {title: 'My Surveys',path: 'mySurveys'})
     }
 }
 
