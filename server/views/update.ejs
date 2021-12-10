@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="updateregisterContents">
+        <div class="updateCover">
+            <div class="front">
+              <img id="updateImg" src="/Assets/images/updateAccount.png" alt="">
+            </div>
+          </div>
+          <div class="updateForms">
+              <div class="form-content">
+                  <div class="update-form">
+                      <div class="title">Update Your Account</div>
+                      <form action="/signup" method="post">
+                          <div class="input-boxes">
+                              <div>
+                                <h6>* Email</h6>
+                                <input class="input-box" type="text" name="email[]" value="<%=  %>" required>
+                              </div>
+                              <div>
+                                <h6>* User Name</h6>
+                                <input class="input-box" type="text" name="uname[]" value=" <%= username %>" required>
+                              </div>
+                              <div>
+                                <h6>* Current Password</h6>
+                                <input class="input-box" type="password" name="password[]" placeholder=" Enter Current Password" required>
+                              </div>
+                              <div>
+                                <h6>* New Password</h6>
+                                <input class="input-box" type="password" name="newPassword[]" placeholder=" Enter New Password" required>
+                              </div>
+                              <div class="updateButton">
+                                <button class="updateBtn" onclick="">Create</button>
+                                <button class="updateBtn" onclick="">Cancel</button>
+                              </div>
+                             
+                          </div>
+                        
+                      </form> 
+                  </div>
+              </div>
+            </div>
+    </div>
+</div>

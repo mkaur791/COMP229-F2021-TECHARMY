@@ -15,8 +15,9 @@
                     <th>No.</th>
                     <th scope="col">Title</th>
                     <th scope="col">Number of Questions</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Updated</th>
+                    <th scope="col">Expires Date</th>
+                    <!-- <th scope="col">Created</th> -->
+                    <!-- <th scope="col">Updated</th> -->
                     <th scope="col">Responses</th>
                     <th></th>
                     <th></th>
@@ -28,8 +29,11 @@
                     <td><%= count+1+"." %></td>
                     <td><%= SurveyList[count].title%></td>
                     <td><%= SurveyList[count].questions%></td>
+                    <!-- *************Have to change Expires date **************-->
                     <td><%= SurveyList[count].created.toLocaleDateString()%></td>
-                    <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
+                    <!-- ********************************************************* -->
+                    <!-- <td><%= SurveyList[count].created.toLocaleDateString()%></td>
+                    <td><%= SurveyList[count].updated.toLocaleDateString()%></td> -->
                     <td><%= SurveyList[count].responses%></td>
                     <td>
                         <a href="/edit/<%= SurveyList[count]._id %>" class = "btn survey__create">

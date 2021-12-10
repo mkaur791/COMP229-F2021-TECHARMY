@@ -21,6 +21,8 @@ router.post('/login',userController.processLoginPage);
 /* Logout route */
 router.get('/logout',userController.logoutUser);
 
+
+
 module.exports = router;
 
 

@@ -28,4 +28,7 @@ router.get('/edit/:id',requireAuth, indexController.displayEditSurveyPage);
 /* GET route for deleting a survey. */
 router.get('/delete/:id',requireAuth,indexController.deleteSurvey)
 
+/* GET route for deleting a survey. */
+router.get('/update',indexController.displayUpdatePage)
+
 module.exports = router;

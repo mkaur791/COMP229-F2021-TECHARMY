@@ -13,7 +13,6 @@ module.exports.displayLoginPage = (req,res,next) => {
     else{
         return res.redirect('/');
     }
-    
 }
 
 module.exports.processLoginPage = (req,res,next) => {

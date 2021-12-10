@@ -92,3 +92,21 @@ module.exports.deleteSurvey = function(req, res, next){
     })
 }
 
+// display updateAccount page
+module.exports.displayUpdatePage = (req, res, next) => {
+    let userId = req.user && req.user._id
+    if(userId){
+        Survey.find({ 'userid': userId },(err, surveyList) => {
+            if(err){
+                return console.error(err);
+            }
+            else{
+                console.log("surveyList",surveyList)
+                res.render('index', {title: 'update',path: 'update',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            }
+        })
+    }
+    else{
+        res.render('index', {title: 'update',path: 'update'})
+    }
+}
