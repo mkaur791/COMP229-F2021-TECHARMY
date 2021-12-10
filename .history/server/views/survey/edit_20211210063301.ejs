@@ -21,6 +21,29 @@
 
 
 
+                <div class="form-group">
+                    <label>Survey Title</label>
+            <table class="table table-hover table-bordered text-center">
+            <thead class="font-weight-bold">
+                <tr>
+
+                    <th scope="col">Created</th>
+                    <th scope="col">Updated</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let count = 0; count < SurveyList.length; count++){ %>
+                <tr>
+
+                    <td><%= SurveyList[count].created.toLocaleDateString()%></td>
+                    <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
+                    
+                </tr>
+                <% } %>
+            </tbody>
+            </table>
+        </div>
 
 
 

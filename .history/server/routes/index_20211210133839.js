@@ -30,7 +30,7 @@ router.get('/edit/:id',requireAuth, indexController.displayEditSurveyPage);
 router.get('/delete/:id',requireAuth,indexController.deleteSurvey)
 
 // /* GET route to display all survey page. */
-router.get('/display', requireAuth, indexController.displayHomePage);
+// router.get('/display', requireAuth, indexController.displayAllSurveyPage);
 
 
 

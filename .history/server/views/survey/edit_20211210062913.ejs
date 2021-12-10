@@ -13,24 +13,22 @@
                     value="<%= survey.title%>"
                     name="title" required>
                 </div>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 
+
+                <form class="form" method="POST" id="add-form">
+                    <div class="form-group">
+                        <label for="surveyTextField">Survey Title</label>
+                        <input type="text" class="form-control"
+                        id="surveyTextField"
+                        value="<%= survey.title%>"
+                        name="title" required>
+                    </div>
+
+
+                <div class="container">
+                    
+
+
 
                 <input type="hidden"  name="questionCount" id="questionCount"/>
                 <% for(let i = 1; i < survey.ques_and_list.length; i++){ %>
