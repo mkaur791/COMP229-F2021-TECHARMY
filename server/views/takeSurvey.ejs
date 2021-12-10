@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10">
+            <br>
+            <h2 class="home__description text-center font-weight-bold">Edit survey</h2>
+
+            <form class="form" method="POST" id="add-form" action="/survey/submit/<%= survey._id %> ">
+                <div class="form-group">
+                    <h1><%= survey.title%></h1>
+                </div>
+                <% for(let i = 0; i < survey.ques_and_list.length; i++){ %>
+                    <div class="form-group question-fields" id="<%=i%>">
+                        <label><%= survey.ques_and_list[i].ques%></label>
+                        <% if (survey.ques_and_list[i].type == 'text') { %>
+                            <input type="text" class="form-control" id="answer<%= i%>" 
+                            placeholder="Enter the Answer" 
+                            name="answer<%= i%>" required>
+                        <% } else { %>
+                            <% for(let j=0;j<survey.ques_and_list[i].options.length;j++){ %>
+                                <br>
+                                <input type="radio" id="answer<%=i%>" value="<%= survey.ques_and_list[i].options[j] %>" 
+                                name="answer<%=i%>" />
+                                <label><%=survey.ques_and_list[i].options[j] %></label><br>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% } %>
+                <div class="add-btn-group btn-lg">
+                    <button type="submit" id="submitSurvey" class="survey__create">SUBMIT</button>
+                    <a href = "/" class="survey__create">CANCEL</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

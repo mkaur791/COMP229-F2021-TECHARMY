@@ -1,4 +1,26 @@
-let Survey = require('../models/survey')
+const { request } = require('express');
+let Survey = require('../models/survey');
+const surveyResponse = require('../models/surveyResponse');
+let SurveyResponse = require('../models/surveyResponse');
+
+
+module.exports.displayHomePage = (req, res, next) => {
+    let userId = req.user && req.user._id
+    if(userId){
+        Survey.find({ 'userid': userId },(err, surveyList) => {
+            if(err){
+                return console.error(err);
+            }
+            else{
+                console.log("surveyList",surveyList)
+                res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            }
+        })
+    }
+    else{
+        res.render('index', {title: 'Home',path: 'home'})
+    }
+}
 
 // display home page
 module.exports.displayHomePage = (req, res, next) => {
@@ -91,4 +113,39 @@ module.exports.deleteSurvey = function(req, res, next){
         }
     })
 }
+
+// display take survey page
+module.exports.takeSurveyPage = (req, res, next) => {
+    let id = req.params.id;
+    Survey.findById(id, (err, surveyToTake, next) =>{
+        if(err){
+            console.log(err);
+            res.end(err);
+        } else {
+            console.log('surveyToTake', surveyToTake)
+            res.render('index', { title: 'Survey',path: 'takeSurvey', survey:surveyToTake,username: req.user? req.user.username : ''});
+        }
+    })
+}
+
+// display take survey page
+module.exports.submitSurvey = (req, res, next) => {
+    let id = req.params.id;
+
+    let newResponse = SurveyResponse({
+        surveyId: id,
+        responses: Object.values(req.body) 
+    })
+    SurveyResponse.create(newResponse ,(err,req,next)=>{
+        if(err){
+            console.log(err);
+            res.end(err);
+        }
+        else{
+            // refresh the survey list
+            res.redirect('/');
+        }
+    })
+}
+
 
