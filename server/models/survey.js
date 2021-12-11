@@ -5,11 +5,10 @@ let Surveys = mongoose.Schema({
     ques_and_list: Array,
     responses: Number,
     questions: Number,
-    created: Date,
+    created: {type:Date},
+    ends: {type:Date},
     updated: Date,
-    userid: String,
-    startDate: Date,
-    endDate: Date
+    userid: String
 },
 {
   collection: "survey"
