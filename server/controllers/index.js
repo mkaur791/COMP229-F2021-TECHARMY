@@ -3,6 +3,23 @@ let Survey = require('../models/survey');
 const surveyResponse = require('../models/surveyResponse');
 let SurveyResponse = require('../models/surveyResponse');
 
+/* Filters expires surveys */
+function getDifferenceInDays(date1, date2) {
+    const diffInMs = date2 - date1;
+    return diffInMs / (1000 * 60 * 60 * 24);
+}
+
+const filterExpiredSurveys=(surveyList) => {
+
+    let filteredData=[];
+    surveyList.forEach((survey)=>{
+        console.log(getDifferenceInDays(survey.ends, survey.created));
+        if(getDifferenceInDays(survey.ends, survey.created) < 0) filteredData.push(survey);
+    });
+
+
+    return filteredData;
+}
 
 module.exports.displayHomePage = (req, res, next) => {
     let userId = req.user && req.user._id
