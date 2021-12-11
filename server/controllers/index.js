@@ -29,12 +29,12 @@ module.exports.displayMySurveysPage = (req, res, next) => {
             }
             else{
                 console.log("surveyList",surveyList)
-                res.render('index', {title: 'My Surveys',path: 'mySurveys',SurveyList:surveyList,username: req.user? req.user.username : ''});
+                res.render('index', {title: 'My Surveys',path: 'survey/mySurveys',SurveyList:surveyList,username: req.user? req.user.username : ''});
             }
         })
     }
     else{
-        res.render('index', {title: 'My Surveys',path: 'mySurveys'})
+        res.render('index', {title: 'My Surveys',path: 'survey/mySurveys'})
     }
 }
 
