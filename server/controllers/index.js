@@ -101,7 +101,7 @@ module.exports.processAddSurvey = (req, res, next) => {
         }
         else{
             // refresh the survey list
-            res.redirect('/', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            res.redirect('/');
         }
     })
 }
