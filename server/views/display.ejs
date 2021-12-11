@@ -2,7 +2,7 @@
         <div class="container">
             <% if(SurveyList.length) {%>
             <br>
-            <h2 class="home__description text-center font-weight-bold">Survey List</h2>
+            <h2 class="home__description text-center font-weight-bold"><% if(title == 'My Surveys'){%>My Surveys<%} else {%>Survey List<%}%></h2>
             <table class="table table-hover table-bordered text-center">
             <thead class="font-weight-bold">
                 <tr>
@@ -14,6 +14,7 @@
                     <th scope="col">Responses</th>
                     <th></th>
                      <% if(typeof username == 'string' && username && title == 'My Surveys'){ %>
+                    <th></th>
                     <th></th>
                      <% } %>
                 </tr>
@@ -36,6 +37,11 @@
                         <td>
                             <a href="/delete/<%= SurveyList[count]._id %>" class = "btn survey__create delete">
                                 Delete Survey
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/statistics/<%= SurveyList[count]._id %>" class = "btn survey__create">
+                                View Statistics
                             </a>
                         </td>
                         <% } else{ %>

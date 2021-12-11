@@ -37,7 +37,10 @@ router.get('/survey/take/:id', indexController.takeSurveyPage);
 
 router.post('/survey/submit/:id', indexController.submitSurvey);
 
-// /* GET route to display all survey page. */
+// route to reporting section
+router.get('/statistics/:id',requireAuth, indexController.viewStats);
+
+/* GET route to display all survey page. */
 router.get('/display', indexController.displayHomePage);
 
 

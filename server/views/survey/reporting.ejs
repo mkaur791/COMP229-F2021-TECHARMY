@@ -1,0 +1,30 @@
+<div class="container">
+    <br>
+    <h2 class="home__description text-center font-weight-bold">Survey Statistics</h2>
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Responses: <%= responses %></h3>
+        <div>
+            <% if(responses){ %><button class = "btn survey__create" onclick="ExportToExcel('xlsx')"> Export to Excel</button><% } %>
+            <a class = "btn survey__create" href="/mySurveys">Back To My Surveys</a>
+        </div>
+    </div>
+    <% for (let i=0; i< stats.length ; i++) { %>
+    <h3><%= stats[i].question %></h3>
+     <table class="table table-hover table-bordered text-center" id="tbl_exporttable_to_xls">
+        <thead class="font-weight-bold">
+            <tr>
+                <th>Option</th>
+                <th scope="col">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+                <% for(let j = 0; j < stats[i].option.length; j++){ %>
+                <tr>
+                    <td class="col-md-6"><%= stats[i].option[j] %></td>
+                    <td class="col-md-6"><%= stats[i].count[j] %></td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+    <% } %>
+</div>
