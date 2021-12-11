@@ -19,6 +19,25 @@ let Survey = require('../models/survey')
 //     }
 // }
 
+// display my surveys page
+module.exports.displayMySurveysPage = (req, res, next) => {
+    let userId = req.user && req.user._id
+    if(userId){
+        Survey.find({ 'userid': userId },(err, surveyList) => {
+            if(err){
+                return console.error(err);
+            }
+            else{
+                console.log("surveyList",surveyList)
+                res.render('index', {title: 'My Surveys',path: 'survey/mySurveys',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            }
+        })
+    }
+    else{
+        res.render('index', {title: 'My Surveys',path: 'survey/mySurveys'})
+    }
+}
+
 // display add/create survey page
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('index', { title: 'Survey',path: 'survey/add',username: req.user? req.user.username : ''});
