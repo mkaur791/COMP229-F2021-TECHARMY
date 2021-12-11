@@ -1,0 +1,64 @@
+    <!-- Home -->
+    <section id="home">
+        <h1 class="home__title">Please Let Us Know</h1>
+        <h2 class="home__description">20 million questions answered daily.</h2>
+        <button class="survey__create"><a href="/add">Create Survey</a></button>
+        <% if(typeof username == 'string' && username){ %>
+              
+            <div class="container">
+                <% if(SurveyList.length) {%>
+                <br>
+                <h2 class="home__description text-center font-weight-bold">Survey List</h2>
+                <table class="table table-hover table-bordered text-center">
+                <thead class="font-weight-bold">
+                    <tr>
+                        <th>No.</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Number of Questions</th>
+                        <!-- <th scope="col">Created</th>
+                        <th scope="col">Updated</th>
+                        <th scope="col">Responses</th> -->
+                        <th scope="col">Expiry Date</th>
+                        <th scope="col">Take Survey</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let count = 0; count < SurveyList.length; count++){ %>
+                    <tr>
+                        <td><%= count+1+"." %></td>
+                        <td><%= SurveyList[count].title%></td>
+                        <td><%= SurveyList[count].questions%></td>
+
+                        
+                        <!-- //remove
+                            <td><%= SurveyList[count].created.toLocaleDateString()%></td>
+                        <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
+                        <td><%= SurveyList[count].responses%></td> -->
+
+                        <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
+                        <td>
+                            <!-- //remove -->
+                                <a href="/delete/<%= SurveyList[count]._id %>" class = "btn survey__create delete">
+                                Take Survey
+                            </a>
+
+                            <!-- <a href="/taksurvey/<%= SurveyList[count]._id %>" class = "btn survey__create ">
+                                Take Survey
+                            </a> -->
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+                </table>
+                <%} else {%>
+                    <div>There is no list of surveys.<br>
+                        Please click the button above to add your first survey
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+    
+    
+    
+      </section>
+    

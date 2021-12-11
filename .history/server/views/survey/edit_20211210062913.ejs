@@ -13,7 +13,22 @@
                     value="<%= survey.title%>"
                     name="title" required>
                 </div>
- 
+                
+
+                <form class="form" method="POST" id="add-form">
+                    <div class="form-group">
+                        <label for="surveyTextField">Survey Title</label>
+                        <input type="text" class="form-control"
+                        id="surveyTextField"
+                        value="<%= survey.title%>"
+                        name="title" required>
+                    </div>
+
+
+                <div class="container">
+                    
+
+
 
                 <input type="hidden"  name="questionCount" id="questionCount"/>
                 <% for(let i = 1; i < survey.ques_and_list.length; i++){ %>
@@ -49,7 +64,7 @@
                 <% } %>
                 <div class="add-btn-group">
                     <button type="submit" id="createSurvey"  class="survey__create">Edit</button>
-                    <a href = "/mySurveys" class="survey__create">Cancel</a>
+                    <a href = "/" class="survey__create">Cancel</a>
                 </div>
             </form>
             <button id="addQues"  class="survey__create" onclick="">Add Question</button>

@@ -23,7 +23,26 @@ module.exports.displayHomePage = (req, res, next) => {
 }
 
 // display home page
-module.exports.displayHomePage = (req, res, next) => {
+// module.exports.displayHomePage = (req, res, next) => {
+//     let userId = req.user && req.user._id
+//     if(userId){
+//         Survey.find({ 'userid': userId },(err, surveyList) => {
+//             if(err){
+//                 return console.error(err);
+//             }
+//             else{
+//                 console.log("surveyList",surveyList)
+//                 res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
+//             }
+//         })
+//     }
+//     else{
+//         res.render('index', {title: 'Home',path: 'home'})
+//     }
+// }
+
+// display my surveys page
+module.exports.displayMySurveysPage = (req, res, next) => {
     let userId = req.user && req.user._id
     if(userId){
         Survey.find({ 'userid': userId },(err, surveyList) => {
@@ -32,12 +51,12 @@ module.exports.displayHomePage = (req, res, next) => {
             }
             else{
                 console.log("surveyList",surveyList)
-                res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
+                res.render('index', {title: 'My Surveys',path: 'survey/mySurveys',SurveyList:surveyList,username: req.user? req.user.username : ''});
             }
         })
     }
     else{
-        res.render('index', {title: 'Home',path: 'home'})
+        res.render('index', {title: 'My Surveys',path: 'survey/mySurveys'})
     }
 }
 
@@ -82,7 +101,7 @@ module.exports.processAddSurvey = (req, res, next) => {
         }
         else{
             // refresh the survey list
-            res.redirect('/');
+            res.redirect('/', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
         }
     })
 }
@@ -142,10 +161,38 @@ module.exports.submitSurvey = (req, res, next) => {
             res.end(err);
         }
         else{
-            // refresh the survey list
-            res.redirect('/');
+            Survey.findById(id ,(err,surveyToUpdate) =>{
+                if(err){
+                    console.log("err..",err)
+                }
+                else{
+                    surveyToUpdate.responses = surveyToUpdate.responses+1
+                    Survey.updateOne({_id: surveyToUpdate._id} ,surveyToUpdate,(err,result)=>{
+                        if(err){
+                            console.log("error updating response")
+                        }
+                        else{
+                            // refresh the survey list
+                            res.redirect('/');
+                        }
+                    })
+                }
+            })
         }
     })
 }
 
 
+// display all surveys in home page when signed in (edit 1)
+module.exports.displayHomePage = (req, res, next) => {
+    // let userId = req.user && req.user._id
+        Survey.find((err, surveyList) => {
+            if(err){
+                return console.error(err);
+            }
+            else{
+                console.log("surveyList",surveyList)
+                res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList, username: req.user? req.user.username : ''});
+            }
+        })
+}
