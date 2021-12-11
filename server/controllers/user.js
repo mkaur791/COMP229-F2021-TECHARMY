@@ -1,8 +1,9 @@
 let express = require('express');
 let router = express.Router();
 let User = require('../models/user')
-
+const bcrypt = require('bcrypt');
 let passport = require('passport');
+let mongoose = require('mongoose');
 
 // display login page
 module.exports.displayLoginPage = (req,res,next) => {
@@ -77,12 +78,68 @@ module.exports.processRegister = (req, res, next) => {
 
 // display update profile page
 module.exports.displayUpdateProfilePage = (req, res, next) => {
-    res.render('index', {title: 'update',path: 'update',user:req.user,username: req.user? req.user.username : ''});
+    res.render('index', {title: 'Update',path: 'update',messages: req.flash('updateMessage'),user:req.user,username: req.user? req.user.username : ''});
 }
 
 // process update profile page
 module.exports.processUpdateProfilePage = (req, res, next) => {
-    console.log("user...",req.body)
+    const {email,username,password,newPassword,id} = req.body
+    User.findById(id,(err, user) =>{
+        if(!err){
+            let comparison = bcrypt.compareSync(password, user.password)
+            if(comparison){
+                // User.find({$and: [{$or: [{username:username},{email:email}]} , {_id : {$ne: id}}]} ,(err, userList) =>{
+                    User.find({$and: [{email:email} , {_id : {$ne: id}}]} ,(err, userList) =>{
+                    if(err){
+                        console.log("err",err)
+                    }
+                    else{
+                        if(userList.length){
+                            req.flash(
+                                'updateMessage',
+                                'The email or username already exists!'
+                            );
+                            return res.redirect('/update');
+                        }
+                        else{
+                            return res.redirect('/update');
+                            // let updatedUser = User({
+                            //     "_id":id,
+                            //     username: user.username,
+                            //     email,
+                            //     password: newPassword,
+                            //     created : user.created
+                            // })
+                        
+                            // User.updateOne({_id:id} ,updatedUser ,(err) =>{
+                            //     if(err){
+                            //         console.log(err);
+                            //         res.end(err);
+                            //     }
+                            //     else{
+                            //         req.flash(
+                            //             'updateMessage',
+                            //             'Profile updated successfully'
+                            //         );
+                            //         res.redirect('/update');
+                            //     }
+                            // });
+                        }
+                    }
+                })
+            }
+            else{
+                req.flash(
+                    'updateMessage',
+                    'The current passsword does not match the stored password'
+                );
+                return res.redirect('/update');
+            }
+        }
+        else{
+            console.log("error...",err)
+        }
+    })
 }
 
 module.exports.logoutUser = (req,res,next) => {

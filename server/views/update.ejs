@@ -7,6 +7,11 @@
           </div>
           <div class="updateForms">
               <div class="form-content">
+                    <% if(messages.length > 0) { %>
+                      <div class="alert alert-danger">
+                        <%= messages %>
+                      </div>
+                    <% } %>
                   <div class="update-form">
                       <div class="title">Update Your Account</div>
                       <form action="/update" method="post">
