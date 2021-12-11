@@ -60,7 +60,7 @@ module.exports.processAddSurvey = (req, res, next) => {
         }
         else{
             // refresh the survey list
-            res.redirect('/', {title: 'All Surveys',path: 'display',SurveyList:surveyList,username: req.user? req.user.username : ''});
+            res.redirect('/', {title: 'Home',path: 'home',SurveyList:surveyList,username: req.user? req.user.username : ''});
         }
     })
 }
@@ -101,7 +101,7 @@ module.exports.displayHomePage = (req, res, next) => {
             }
             else{
                 console.log("surveyList",surveyList)
-                res.render('index', {title: 'All Surveys',path: 'display',SurveyList:surveyList, username: req.user? req.user.username : ''});
+                res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList, username: req.user? req.user.username : ''});
             }
         })
 }

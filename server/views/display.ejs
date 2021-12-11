@@ -1,10 +1,4 @@
-    <!-- Display All Survey page -->
-  <section id="home">
-    <h1 class="home__title">Please Let Us Know</h1>
-    <h2 class="home__description">20 million questions answered daily.</h2>
-    <button class="survey__create"><a href="/add">Create Survey</a></button>
-
-          
+  
         <div class="container">
             <% if(SurveyList.length) {%>
             <br>
@@ -16,7 +10,10 @@
                     <th scope="col">Title</th>
                     <th scope="col">Number of Questions</th>
                     <th scope="col">Expiry Date</th>
-                    <th scope="col">Take Survey</th>
+                    <th></th>
+                     <% if(typeof username == 'string' && username){ %>
+                    <th></th>
+                     <% } %>
                 </tr>
             </thead>
             <tbody>
@@ -26,12 +23,24 @@
                         <td><%= SurveyList[count].title%></td>
                         <td><%= SurveyList[count].questions%></td>
                         <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
+                        <% if(typeof username == 'string' && username){ %>
                         <td>
-                                <a href="/survey/take/<%= SurveyList[count]._id %>" class = "btn survey__create delete">
+                            <a href="/edit/<%= SurveyList[count]._id %>" class = "btn survey__create">
+                            Edit Survey
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/delete/<%= SurveyList[count]._id %>" class = "btn survey__create delete">
+                                Delete Survey
+                            </a>
+                        </td>
+                        <% } else{ %>
+                        <td>
+                            <a href="/survey/take/<%= SurveyList[count]._id %>" class = "btn survey__create delete">
                                 Take Survey
                             </a>
-
                         </td>
+                        <% } %>
                     </tr>
                 <% } %>
             </tbody>
@@ -41,9 +50,3 @@
                     Please click the button above to add your first survey
                 </div>
             <% } %>
-        </div>
-
-
-
-
-  </section>
