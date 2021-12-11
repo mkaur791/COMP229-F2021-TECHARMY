@@ -192,7 +192,7 @@ module.exports.viewStats = (req, res, next) => {
                     stats.push(stat)
                 }
                 statistics = stats
-                res.render('index', {title: 'Reporting',path: 'survey/reporting',stats:stats,responses: survey.responses,username: req.user? req.user.username : ''})
+                res.render('index', {title: 'Reporting',path: 'survey/reporting',stats:stats,responses: survey.responses,surveyTitle:survey.title,username: req.user? req.user.username : ''})
             })
         }
     })

@@ -136,7 +136,7 @@ const createAddIcon = () => {
     return button;
 }
 
-function ExportToExcel(type, fn, dl) {
+const ExportToExcel = (type, fn, dl) => {
     var elt = document.getElementById('tbl_exporttable_to_xls');
     var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
     return dl ?
