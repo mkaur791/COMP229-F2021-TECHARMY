@@ -176,35 +176,40 @@ module.exports.viewStats = (req, res, next) => {
         if(err){ console.log(err)}
         else {
             SurveyResponse.find({surveyId:surveyId},(err,surResponseList) =>{
-                for(let i =0;i<ques_and_list.length;i++){
-                    if(ques_and_list[i].type == 'mcq'){
-                        let ans=[]
-                        for(let j=0;j<surResponseList.length;j++){
-                                ans.push(surResponseList[j].responses[i])
-                                responses[ques_and_list[i].ques] = {
-                                    answers : ans
-                                }
-                        }
-                        for(let k=0;k<ques_and_list[i].options.length;k++){
-                            responses[ques_and_list[i].ques][ques_and_list[i].options[k]] =   responses[ques_and_list[i].ques]['answers'].filter(r => r == ques_and_list[i].options[k]).length
+                if(surResponseList.length){
+                    for(let i =0;i<ques_and_list.length;i++){
+                        if(ques_and_list[i].type == 'mcq'){
+                            let ans=[]
+                            for(let j=0;j<surResponseList.length;j++){
+                                    ans.push(surResponseList[j].responses[i])
+                                    responses[ques_and_list[i].ques] = {
+                                        answers : ans
+                                    }
+                            }
+                            for(let k=0;k<ques_and_list[i].options.length;k++){
+                                responses[ques_and_list[i].ques][ques_and_list[i].options[k]] =   responses[ques_and_list[i].ques]['answers'].filter(r => r == ques_and_list[i].options[k]).length
+                            }
                         }
                     }
-                }
-                for (const property in responses) {
-                    let keys =  Object.keys(responses[property])
-                    let values =  Object.values(responses[property])
-                    keys.shift()
-                    values.shift()
-                    let stat = {
-                        'question' : property,
-                        'option' : keys,
-                        'count' : values
+                    for (const property in responses) {
+                        let keys =  Object.keys(responses[property])
+                        let values =  Object.values(responses[property])
+                        keys.shift()
+                        values.shift()
+                        let stat = {
+                            'question' : property,
+                            'option' : keys,
+                            'count' : values
+                        }
+                        stats.push(stat)
                     }
-                    stats.push(stat)
+                    statistics = stats
+                    res.render('index', {title: 'Reporting',path: 'survey/reporting',stats:stats,responses: survey.responses,surveyTitle:survey.title,username: req.user? req.user.username : ''})
                 }
-                statistics = stats
-                res.render('index', {title: 'Reporting',path: 'survey/reporting',stats:stats,responses: survey.responses,surveyTitle:survey.title,username: req.user? req.user.username : ''})
-            })
+                else{
+                    res.render('index', {title: 'Reporting',path: 'survey/reporting',stats:[],responses: survey.responses,surveyTitle:survey.title,username: req.user? req.user.username : ''})
+                }
+        })
         }
     })
 }
