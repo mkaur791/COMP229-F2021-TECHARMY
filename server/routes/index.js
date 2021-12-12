@@ -46,3 +46,4 @@ router.get('/display', indexController.displayHomePage);
 
 
 module.exports = router;
+module.exports.requireAuth = requireAuth;

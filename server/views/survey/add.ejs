@@ -13,7 +13,17 @@
 
             <form class="form" method="POST" id="add-form">
                 <div class="form-group">
-                    <label for="surveyTextField">Survey Title</label>
+                    <div class="form-title">
+                        <label for="surveyTextField">Survey Title</label>
+                        <div class="surveyDate">
+                            <h6>Active: </h6>
+                            <input type='date' name='activeDate'/>
+                            <h6>Expires: </h6>
+                            <input type='date' name='activeDate'/>
+                        </div>
+                    </div>
+                    
+                    
                     <input type="text" class="form-control"
                     id="surveyTextField"
                     placeholder="Enter the Survey Title"

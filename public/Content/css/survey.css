@@ -37,3 +37,16 @@ form label{
     bottom: -75px;
     right: 0;
 }
+.form-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.surveyDate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.surveyDate h6{
+    margin: 0 10px 5px 15px;
+}

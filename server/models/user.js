@@ -46,6 +46,11 @@ let User = mongoose.Schema(
 );
 
 User.pre('save', async function (next) {
+    //check if password is modified, else no need to do anything
+    if (!this.isModified('password')) {
+        return next()
+    }
+     
     const hash = await bcrypt.hash(this.password, 10);
     this.password = hash;
     next();

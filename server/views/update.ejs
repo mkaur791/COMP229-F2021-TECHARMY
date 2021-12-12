@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="updateregisterContents">
+        <div class="updateCover">
+            <div class="front">
+              <img id="updateImg" src="/Assets/images/updateAccount.png" alt="">
+            </div>
+          </div>
+          <div class="updateForms">
+              <div class="form-content">
+                    <% if(messages.length > 0) { %>
+                      <div class="alert alert-danger">
+                        <%= messages %>
+                      </div>
+                    <% } %>
+                  <div class="update-form">
+                      <div class="title">Update Your Account</div>
+                      <form action="/update" method="post">
+                          <div class="input-boxes">
+                              <div>
+                                <h6>Email</h6>
+                                <input class="input-box" type="text" name="email" value="<%= user.email %>" required>
+                              </div>
+                              <div>
+                                <h6>User Name (This cannot be changed)</h6>
+                                <input disabled class="input-box" type="text" name="username" value=" <%= user.username %>" required>
+                              </div>
+                              <div>
+                                <h6>Current Password</h6>
+                                <input class="input-box" type="password" name="password" placeholder=" Enter Current Password" required>
+                              </div>
+                              <div>
+                                <h6>New Password</h6>
+                                <input class="input-box" type="password" name="newPassword" placeholder=" Enter New Password" required>
+                              </div>
+                              <input type="hidden" name="id" value="<%= user._id %>" />
+                              <div class="updateButton">
+                                <button class="updateBtn" onclick="">Update</button>
+                                <button class="updateBtn" onclick="history.back()">Cancel</button>
+                              </div>
+                             
+                          </div>
+                        
+                      </form> 
+                  </div>
+              </div>
+            </div>
+    </div>
+</div>

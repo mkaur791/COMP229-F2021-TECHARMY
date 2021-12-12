@@ -35,8 +35,12 @@
           <% } %>
           
         <% if(typeof username == 'string' && username){ %>
-          <li class="nav-item">
-              <a class="nav-link"  href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link active" id="dropbtn"><i class="far fa-user"></i> <%= username %> <i class="fas fa-sort-down"></i></a>
+              <div class="dropdown-content">
+                <a href="/update"><i class="fas fa-pen"></i> Update</a>
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+              </div>
           </li>
 <!-- 
           <li class="nav-item">
