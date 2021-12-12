@@ -53,7 +53,7 @@ module.exports.processRegister = (req, res, next) => {
     User.register(newUser, req.body.password, (err) => {
         if(err)
         {
-            console.log("Error: Inserting New User");            
+            console.log("Error: Inserting New User",err);            
             if(err.name == "UserExistsError")
             {
                 console.log('Error: User Already Exists!')
@@ -83,12 +83,11 @@ module.exports.displayUpdateProfilePage = (req, res, next) => {
 
 // process update profile page
 module.exports.processUpdateProfilePage = (req, res, next) => {
-    const {email,username,password,newPassword,id} = req.body
+    const {email,password,newPassword,id} = req.body
     User.findById(id,(err, user) =>{
         if(!err){
             let comparison = bcrypt.compareSync(password, user.password)
             if(comparison){
-                // User.find({$and: [{$or: [{username:username},{email:email}]} , {_id : {$ne: id}}]} ,(err, userList) =>{
                     User.find({$and: [{email:email} , {_id : {$ne: id}}]} ,(err, userList) =>{
                     if(err){
                         console.log("err",err)
@@ -97,33 +96,27 @@ module.exports.processUpdateProfilePage = (req, res, next) => {
                         if(userList.length){
                             req.flash(
                                 'updateMessage',
-                                'The email or username already exists!'
+                                'The email already exists!'
                             );
                             return res.redirect('/update');
                         }
                         else{
-                            return res.redirect('/update');
-                            // let updatedUser = User({
-                            //     "_id":id,
-                            //     username: user.username,
-                            //     email,
-                            //     password: newPassword,
-                            //     created : user.created
-                            // })
-                        
-                            // User.updateOne({_id:id} ,updatedUser ,(err) =>{
-                            //     if(err){
-                            //         console.log(err);
-                            //         res.end(err);
-                            //     }
-                            //     else{
-                            //         req.flash(
-                            //             'updateMessage',
-                            //             'Profile updated successfully'
-                            //         );
-                            //         res.redirect('/update');
-                            //     }
-                            // });
+                            user.email = email
+                            user.password = newPassword
+                            user.created = user.created
+                            user.save(function(err){
+                                if (err) { next(err) }
+                                else {
+                                  req.flash(
+                                        'updateMessage',
+                                        'Profile updated successfully'
+                                    );
+                                    user.changePassword(password, newPassword, function(err,result){
+                                        if(err) console.log(err)
+                                        else res.redirect('/update');
+                                    });
+                                }
+                            })
                         }
                     }
                 })
