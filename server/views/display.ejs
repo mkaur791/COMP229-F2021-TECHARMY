@@ -24,6 +24,8 @@
                         <td><%= count+1+"." %></td>
                         <td><%= SurveyList[count].title%></td>
                         <td><%= SurveyList[count].questions%></td>
+                        <td><%= SurveyList[count].startDate.toLocaleDateString()%></td>
+                        <td><%= SurveyList[count].endDate.toLocaleDateString()%></td>
                         <td><%= SurveyList[count].created.toLocaleDateString()%></td>
                         <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
                         <td><%= SurveyList[count].responses%></td>
