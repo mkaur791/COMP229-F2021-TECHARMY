@@ -7,7 +7,15 @@
 
             <form class="form" method="POST" id="add-form">
                 <div class="form-group">
-                    <label for="surveyTextField">Survey Title</label>
+                    <div class="form-title">
+                        <label for="surveyTextField">Survey Title</label>
+                        <div class="surveyDate">
+                            <label>Active: </label>
+                            <input type='date' name='startDate'class="form-control" value="<%= survey.startDate%>" required/>
+                            <label>Expires: </label>
+                            <input type='date' name='endDate' class="form-control" value="<%= survey.endDate%>" required/>
+                        </div>
+                    </div>
                     <input type="text" class="form-control"
                     id="surveyTextField"
                     value="<%= survey.title%>"
