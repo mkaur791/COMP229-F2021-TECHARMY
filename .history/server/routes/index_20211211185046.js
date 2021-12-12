@@ -40,6 +40,6 @@ router.post('/survey/submit/:id', indexController.submitSurvey);
 // /* GET route to display all survey page. */
 router.get('/display', indexController.displayHomePage);
 
- 
+
 
 module.exports = router;

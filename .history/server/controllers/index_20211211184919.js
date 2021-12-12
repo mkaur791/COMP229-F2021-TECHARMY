@@ -197,7 +197,7 @@ module.exports.displayHomePage = (req, res, next) => {
         })
 }
 
-app.get("/",(req,res)=>{
+module.exports.calendar("/",(req,res)=>{
     const year = req.query.year || 2020;
     const months = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"];

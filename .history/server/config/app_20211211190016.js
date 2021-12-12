@@ -48,7 +48,7 @@ app.get("/display",(req,res)=>{
   const months = ["January", "February", "March", "April", "May", "June", "July",
   "August", "September", "October", "November", "December"];
 
-  res.render("index",{calendar: calendar(year),months,year});
+  res.render("index.ejs",{calendar: calendar(year),months,year});
 }); 
 
 

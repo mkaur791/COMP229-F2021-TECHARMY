@@ -43,12 +43,12 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 //calendar
-app.get("/display",(req,res)=>{
+app.get("/",(req,res)=>{
   const year = req.query.year || 2021;
   const months = ["January", "February", "March", "April", "May", "June", "July",
   "August", "September", "October", "November", "December"];
 
-  res.render("index",{calendar: calendar(year),months,year});
+  res.render("index.ejs",{calendar: calendar(year),months,year});
 }); 
 
 

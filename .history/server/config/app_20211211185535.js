@@ -4,7 +4,6 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-let calendar = require("./calendar-config");
 
 // database setup
 let mongoose = require('mongoose');
@@ -43,12 +42,12 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 //calendar
-app.get("/display",(req,res)=>{
-  const year = req.query.year || 2021;
+app.get("/",(req,res)=>{
+  const year = req.query.year || 2020;
   const months = ["January", "February", "March", "April", "May", "June", "July",
   "August", "September", "October", "November", "December"];
 
-  res.render("index",{calendar: calendar(year),months,year});
+  res.render("index.ejs",{calendar: calendar(year),months,year});
 }); 
 
 
