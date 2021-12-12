@@ -10,16 +10,21 @@
         <div class="col-md-10">
             <br>
             <h2 class="home__description text-center font-weight-bold">Create a survey</h2>
+            <% if(messages.length > 0) { %>
+                <div class="alert alert-danger">
+                   <%= messages %>
+                </div>
+            <% } %>
 
             <form class="form" method="POST" id="add-form">
                 <div class="form-group">
                     <div class="form-title">
                         <label for="surveyTextField">Survey Title</label>
                         <div class="surveyDate">
-                            <h6>Active: </h6>
-                            <input type='date' name='activeDate'/>
-                            <h6>Expires: </h6>
-                            <input type='date' name='activeDate'/>
+                            <label>Active: </label>
+                            <input type='date' name='startDate'class="form-control" required/>
+                            <label>Expires: </label>
+                            <input type='date' name='endDate' class="form-control" required/>
                         </div>
                     </div>
                     

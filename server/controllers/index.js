@@ -1,6 +1,7 @@
 let Survey = require('../models/survey');
 let SurveyResponse = require('../models/surveyResponse');
 const excelJS = require("exceljs");
+const {validateStartDate , validateEndDate} = require('../utils')
 
 // display my surveys page
 module.exports.displayMySurveysPage = (req, res, next) => {
@@ -23,12 +24,20 @@ module.exports.displayMySurveysPage = (req, res, next) => {
 
 // display add/create survey page
 module.exports.displayAddSurveyPage = (req, res, next) => {
-    res.render('index', { title: 'Survey',path: 'survey/add',username: req.user? req.user.username : ''});
+    res.render('index', { title: 'Survey',path: 'survey/add',messages:req.flash('addMessage'),username: req.user? req.user.username : ''});
 }
 
 // process add survey page
 module.exports.processAddSurvey = (req, res, next) => {
-
+    const {startDate , endDate} = req.body
+    if(!validateStartDate(startDate)){
+        req.flash('addMessage','The survey start date must be a future date')
+        return res.redirect('/add')
+    }
+    if(!validateEndDate(startDate , endDate)){
+        req.flash('addMessage','The survey end date cannot be before the start date');
+        return res.redirect('/add')
+    }
     let totalQuestions =  req.body.questionCount
     let title = req.body.title
     let quesData = req.body
@@ -51,7 +60,9 @@ module.exports.processAddSurvey = (req, res, next) => {
         questions: data.length,
         userid: req.user._id,
         created: new Date(),
-        updated: new Date()
+        updated: new Date(),
+        startDate : new Date(startDate),
+        endDate : new Date(endDate)
     })
 
     // create a new survey

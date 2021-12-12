@@ -46,7 +46,8 @@ form label{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0px 0px 15px 0px;
 }
-.surveyDate h6{
+.surveyDate label{
     margin: 0 10px 5px 15px;
 }
