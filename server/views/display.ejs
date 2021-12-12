@@ -9,8 +9,8 @@
                     <th>No.</th>
                     <th scope="col">Title</th>
                     <th scope="col">Number of Questions</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Updated</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">Expires</th>
                     <th scope="col">Responses</th>
                     <th></th>
                      <% if(typeof username == 'string' && username && title == 'My Surveys'){ %>
@@ -26,8 +26,6 @@
                         <td><%= SurveyList[count].questions%></td>
                         <td><%= SurveyList[count].startDate.toLocaleDateString()%></td>
                         <td><%= SurveyList[count].endDate.toLocaleDateString()%></td>
-                        <td><%= SurveyList[count].created.toLocaleDateString()%></td>
-                        <td><%= SurveyList[count].updated.toLocaleDateString()%></td>
                         <td><%= SurveyList[count].responses%></td>
                         <% if(typeof username == 'string' && username && title == 'My Surveys'){ %>
                         <td>
