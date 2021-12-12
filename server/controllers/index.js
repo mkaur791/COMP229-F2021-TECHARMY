@@ -100,7 +100,10 @@ module.exports.deleteSurvey = function(req, res, next){
             res.end(err);
         }
         else{
-            res.redirect('/');
+            SurveyResponse.deleteMany({ surveyId: id }, function (err) {
+                if(err) console.log(err)
+                else  res.redirect('/');
+            });       
         }
     })
 }
@@ -162,8 +165,9 @@ module.exports.displayHomePage = (req, res, next) => {
                 return console.error(err);
             }
             else{
-                console.log("surveyList",surveyList)
-                res.render('index', {title: 'Home',path: 'home',SurveyList:surveyList, username: req.user? req.user.username : ''});
+                let currentDate = new Date()
+                let filteredSurveys = surveyList.filter(sur => sur.startDate <= currentDate && sur.endDate > currentDate)
+                res.render('index', {title: 'Home',path: 'home',SurveyList:filteredSurveys, username: req.user? req.user.username : ''});
             }
         })
 }
