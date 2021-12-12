@@ -11,15 +11,9 @@
                     <input type="text" class="form-control"
                     id="surveyTextField"
                     value="<%= survey.title%>"
-                    style="margin-bottom:10px;"
                     name="title" required>
                 </div>
 
-                <label>Survey ends on</label>
-                    <input type="date" class="form-control"
-                   
-                    placeholder="Enter survey end date" value="<%= survey.ends %>"
-                    name="endDate" required>
                 <input type="hidden"  name="questionCount" id="questionCount"/>
                 <% for(let i = 1; i < survey.ques_and_list.length; i++){ %>
                     <div class="form-group question-fields" id="<%=i%>">
