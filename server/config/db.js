@@ -1,4 +1,4 @@
 module.exports = 
 {
-    "URI": "mongodb+srv://techarmy:785HFu3qQZQoWdPL@techarmysurvey.3dtag.mongodb.net/TechArmySurvey?retryWrites=true&w=majority"
+    "URI": `mongodb+srv://${process.env.DATABASE_USER_NAME}:${process.env.DATABASE_PASSWORD}@techarmysurvey.7mzuvq3.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`
 }

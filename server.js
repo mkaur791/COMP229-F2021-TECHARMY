@@ -3,6 +3,8 @@
 /**
  * Module dependencies.
  */
+const dotenv = require('dotenv');
+dotenv.config();
 
  let app = require('./server/config/app');
  let debug = require('debug')('comp229-f2021-techarmy:server');
